@@ -44,6 +44,7 @@ SciViews::R("ts")
 
 ```{r Import}
 covid <- read$rds("data/mobility_wallonia.rds")
+class(covid)
 ```
 
 ## Conclusion
