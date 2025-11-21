@@ -61,7 +61,7 @@ covid %>.%
   covid1
 ```
 
-### 2020 
+### 2020
 
 ```{r}
 
@@ -73,13 +73,13 @@ covid %>.%
 
 ```
 
-### 2023 
+### 2023
 
 ```{r}
 
 ```
 
-### Comparaison des années 
+### Comparaison des années
 
 ```{r}
 
