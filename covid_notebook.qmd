@@ -61,6 +61,30 @@ covid %>.%
   covid1
 ```
 
+### 2020 
+
+```{r}
+
+```
+
+### 2021
+
+```{r}
+
+```
+
+### 2023 
+
+```{r}
+
+```
+
+### Comparaison des années 
+
+```{r}
+
+```
+
 ## Conclusion
 
 <!--% Lorsque toutes les analyses sont réalisées, terminez ce bloc-notes avec 3 à 6 phrases de conclusion en rapport avec ce que vous avez observé dans vos analyses. Quels sont les éléments les plus pertinents que vous retenez ? -->
