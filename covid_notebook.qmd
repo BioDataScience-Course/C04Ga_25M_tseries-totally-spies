@@ -51,6 +51,16 @@ covid <- read$rds("data/mobility_wallonia.rds")
 class(covid)
 ```
 
+```{r varnames}
+covid %>.%
+  sselect(., retail_and_recreation_percent_change_from_baseline, workplaces_percent_change_from_baseline, residential_percent_change_from_baseline) %>.%
+  srename(., 
+    retail_and_recreation_percent_change_from_baseline = "activité",
+    workplaces_percent_change_from_baseline = "job",
+    residential_percent_change_from_baseline = "maison") -> 
+  covid1
+```
+
 ## Conclusion
 
 <!--% Lorsque toutes les analyses sont réalisées, terminez ce bloc-notes avec 3 à 6 phrases de conclusion en rapport avec ce que vous avez observé dans vos analyses. Quels sont les éléments les plus pertinents que vous retenez ? -->
