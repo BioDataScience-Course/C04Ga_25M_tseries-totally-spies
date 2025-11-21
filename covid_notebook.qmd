@@ -1,6 +1,6 @@
 ---
-title: "___"
-author: "___"
+title: "Mobilité en Wallonie avant et pendant la pandémie COVID-19"
+author: "Basile Vandendyck, Mathilda Devries, Juliette Hayt, Norah Martin"
 format:
   html:
     code-fold: true
