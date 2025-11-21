@@ -60,3 +60,4 @@ Effectuez un 'Rendu' des documents finaux en HTML ou PDF et assurez-vous que ce 
 
 Dans le cadre de votre travail, vous avez le droit d’être aidé par l’intelligence artificielle. Le chatbot SciViews est disponible dans votre RStudio sur Saturn Cloud via l’addin Help. Il répond aux questions concernant le langage R, les statistiques et la science des données.
 
+
