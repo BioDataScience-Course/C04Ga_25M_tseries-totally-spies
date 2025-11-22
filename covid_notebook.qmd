@@ -8,6 +8,7 @@ format:
     toc: true
 editor: visual
 lang: fr
+bibliography: references.bib
 ---
 
 <!--# Ceci est un commentaire. -->
@@ -20,11 +21,9 @@ lang: fr
 
 <!--% Rédigez une courte introduction de 3 ou 5 phrases qui présente vos données. Ajoutez une phrase de but. Vous devez citer la bibliographie en utilisant le formatage Markdown ad hoc et en incluant votre référence au format bibtex dans le fichier references.bib. -->
 
-Examiner si les personnes ont été correctement renvoyées chez elles pour travailler (en comparant *lieu de travail* et *lieu de résidence* — NB : le lieu de résidence ne concerne pas uniquement les personnes qui travaillent, donc on s’attend forcément à une légère diminution en 2022, mais à une augmentation par rapport à 2020. Peut-être en raison d’un plus fort chômage ?).\
+La COVID-19, également appelée maladie à coronavirus 2019, a déclenché une pandémie mondiale sans précédent. Pour limiter la propagation du virus, les gouvernements ont mis en place diverses mesures qui ont profondément modifié les endroits que nous avions l’habitude de fréquenter \[Google\]. Par conséquent, nos visites au travail, pour faire les courses ou pour nos loisirs ont été impactées.
 
-Nous voulons également vérifier si les gens sont **retournés dans les bureaux après le Covid**.\
-
-Enfin, nous cherchons à savoir si le fait de pouvoir rester chez eux a entraîné **plus d’activités extérieures** (même si ces activités concernent aussi des personnes qui ne travaillent pas).
+Cette étude vise à analyser les effets de la COVID-19, entre 2020 et 2022, sur les lieux fréquentés par la population active, en se concentrant sur les changements dans leur vie professionnelle et quotidienne.
 
 ## Matériel et méthodes
 
@@ -90,3 +89,5 @@ covid %>.%
 <!--% Lorsque toutes les analyses sont réalisées, terminez ce bloc-notes avec 3 à 6 phrases de conclusion en rapport avec ce que vous avez observé dans vos analyses. Quels sont les éléments les plus pertinents que vous retenez ? -->
 
 ...vos conclusions ici...
+
+## Références
