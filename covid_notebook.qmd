@@ -62,8 +62,8 @@ covid %>.%
 
 ### 2020
 
-```{r2020}
-
+```{r}
+ts(covid1$maison, start = c(2020,46), frequency = 365)
 ```
 
 ### 2021
