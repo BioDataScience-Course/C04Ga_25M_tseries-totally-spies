@@ -21,7 +21,7 @@ bibliography: references.bib
 
 <!--% Rédigez une courte introduction de 3 ou 5 phrases qui présente vos données. Ajoutez une phrase de but. Vous devez citer la bibliographie en utilisant le formatage Markdown ad hoc et en incluant votre référence au format bibtex dans le fichier references.bib. -->
 
-La COVID-19, également appelée maladie à coronavirus 2019, a déclenché une pandémie mondiale sans précédent. Pour limiter la propagation du virus, les gouvernements ont mis en place diverses mesures qui ont profondément modifié les endroits que nous avions l’habitude de fréquenter \[Google\]. Par conséquent, nos visites au travail, pour faire les courses ou pour nos loisirs ont été impactées.
+La COVID-19, également appelée maladie à coronavirus 2019, a déclenché une pandémie mondiale sans précédent. Pour limiter la propagation du virus, les gouvernements ont mis en place diverses mesures qui ont profondément modifié les endroits que nous avions l’habitude de fréquenter [@Google]. Par conséquent, nos visites au travail, pour faire les courses ou pour nos loisirs ont été impactées.
 
 Cette étude vise à analyser les effets de la COVID-19, entre 2020 et 2022, sur les lieux fréquentés par la population active, en se concentrant sur les changements dans leur vie professionnelle et quotidienne.
 
@@ -60,19 +60,71 @@ covid %>.%
   covid1
 ```
 
-### 2020
+### Série 1 : Evolution du temps passée à la maison au cours du temps
 
 ```{r}
-ts(covid1$maison, start = c(2020,46), frequency = 365)
+maison_ts<-ts(covid1$maison, start = c(2020,46), frequency = 365)
+plot(maison_ts)
 ```
 
-### 2021
+```{r decomp1}
+maison_decomp <- tsd(maison_ts, method = "median", order = 8, times = 10)
+plot(maison_decomp, xlab = "Temps passé à la maison")
+```
 
-```{r2021}
+```{r plotmaison}
+plot(maison_decomp, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos = "topright", xlab = "Temps passé à la maison")
 
 ```
 
+<<<<<<< HEAD
 ### Activités
+=======
+On peut voir dans ce graphique que nous avons une très grande augmentation du temps passée à la maison en 2020, cela correspond au moment du premier confinement, on voit aussi une seconde augmentation en 2021 ( entre 220 jours et 600jours), qui correpond confinement puis on assiste à une baisse progressive qui correspond au déconfinement progressif.
+
+Il est intéressant aussi de remarquer que en 2022 lors du retour à la "normale" le temps passée à la maison est légèrement plus haut que ce qu'il était au tout début 2020 avant le covid.
+
+Essayons maintenant de reproduire notre analyse, en prenant en compte les jours et semaines
+
+```{r}
+covidw <- covid
+# Calcul des jours de la semaine
+covidw$weekdays <- weekdays(as.POSIXct(covidw$date))
+# Les données du week-end sont remplacées par des valeurs manquantes
+covidw[covidw$weekdays == "Saturday" | covidw$weekdays == "Sunday" , 2:7] <- NA 
+# La série temporelle est créée (début le 15 février 2020 = 46e jour de l'année 2020)
+covidw_ts <- ts(covidw$residential_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+plot(covidw_ts)
+# Aggrégation par moyenne des valeurs par semaine
+covidw_ts2 <- aggregate(covidw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+plot(covidw_ts2)
+```
+
+### Occupation professionnelle
+
+```{r 2021}
+tsjob <- ts(covid1$job, start = c(2020,46), frequency = 365)
+```
+
+```{r 2021acf}
+acf(tsjob)
+```
+
+l'acf montre qu'il existe potentiellement une tendnace générale à la diminution. Potentiellement la présence de cycle de fréquence 0,02 (correspondant à un cycle tous les 7jours plus ou moins)
+
+```{r extract}
+extract()
+```
+
+```{r loess}
+tsdjob <- tsd(tsjob, method = "loess", s.window = 7, trend = TRUE)
+plot(tsdjob)
+```
+
+### Juliette
+
+2022
+>>>>>>> c28c64b7ccbf99053a8d0a6d2d6fe784ff95713b
 
 ```{r activites}
 activite <- ts(covid1$activité, start = c(2020,46), frequency = 365)
