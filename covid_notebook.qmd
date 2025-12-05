@@ -86,8 +86,10 @@ extract()
 tsdjob <- tsd(tsjob, method = "loess", s.window = 7, trend = TRUE)
 plot(tsdjob)
 ```
-###Juliette
-### 2022
+
+### Juliette
+
+2022
 
 ```{r2022}
 
