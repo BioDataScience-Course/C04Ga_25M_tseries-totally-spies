@@ -69,9 +69,24 @@ ts(covid1$maison, start = c(2020,46), frequency = 365)
 ### Occupation professionnelle
 
 ```{r 2021}
-ts(covid1$job, start = c(2020,46), frequency = 365)
+tsjob <- ts(covid1$job, start = c(2020,46), frequency = 365)
 ```
 
+```{r 2021acf}
+acf(tsjob)
+```
+
+l'acf montre qu'il existe potentiellement une tendnace générale à la diminution. Potentiellement la présence de cycle de fréquence 0,02 (correspondant à un cycle tous les 7jours plus ou moins)
+
+```{r extract}
+extract()
+```
+
+```{r loess}
+tsdjob <- tsd(tsjob, method = "loess", s.window = 7, trend = TRUE)
+plot(tsdjob)
+```
+###Juliette
 ### 2022
 
 ```{r2022}
