@@ -97,7 +97,7 @@ covidw_ts2 <- aggregate(covidw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidw_ts2)
 ```
 
-### Occupation professionnelle
+### Série 2 : Occupation professionnelle
 
 ```{r 2021}
 tsjob <- ts(covid1$job, start = c(2020,46), frequency = 365)
