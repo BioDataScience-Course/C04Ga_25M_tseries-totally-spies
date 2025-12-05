@@ -126,6 +126,20 @@ tsd_evf <- tsd(tsjob, method = "evf", lag = 28, axes = 1)
 plot(tsd_evf)
 ```
 
+```{r sep sem wk}
+covidj <- covid
+# Calcul des jours de la semaine
+covidj$weekdays <- weekdays(as.POSIXct(covidj$date))
+# Les données du week-end sont remplacées par des valeurs manquantes
+covidj[covidj$weekdays == "Saturday" | covidj$weekdays == "Sunday" , 2:7] <- NA 
+# La série temporelle est créée (début le 15 février 2020 = 46e jour de l'année 2020)
+covidj_ts <- ts(covidj$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+plot(covidj_ts)
+# Aggrégation par moyenne des valeurs par semaine
+covidj_ts2 <- aggregate(covidj_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+plot(covidj_ts2)
+```
+
 ### Activités
 
 ```{r activites}
