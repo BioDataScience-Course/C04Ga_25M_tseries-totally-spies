@@ -81,7 +81,7 @@ On peut voir dans ce graphique que nous avons une très grande augmentation du t
 
 Il est intéressant aussi de remarquer que en 2022 lors du retour à la "normale" le temps passée à la maison est légèrement plus haut que ce qu'il était au tout début 2020 avant le covid.
 
-Essayons maintenant de reproduire notre analyse, en prenant en compte les jours et semaines
+Essayons maintenant de reproduire notre analyse, en prenant en compte les jours et weekend :
 
 ```{r}
 covidw <- covid
@@ -95,6 +95,16 @@ plot(covidw_ts)
 # Aggrégation par moyenne des valeurs par semaine
 covidw_ts2 <- aggregate(covidw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidw_ts2)
+tsp(covidw_ts2)
+```
+
+```{r decompmaison2}
+decompmaison2 <-tsd(covidw_ts2, method = "median", order = 2, times = 10)
+plot(decompmaison2)
+```
+
+```{r}
+plot(decompmaison2, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos = "topright", xlab = "Temps passé à la maison", main = "Evolution du temps passé à la maison entre 2020 et 2022")
 ```
 
 ### Série 2 : Occupation professionnelle
