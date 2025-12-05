@@ -21,7 +21,7 @@ bibliography: references.bib
 
 <!--% Rédigez une courte introduction de 3 ou 5 phrases qui présente vos données. Ajoutez une phrase de but. Vous devez citer la bibliographie en utilisant le formatage Markdown ad hoc et en incluant votre référence au format bibtex dans le fichier references.bib. -->
 
-La COVID-19, également appelée maladie à coronavirus 2019, a déclenché une pandémie mondiale sans précédent. Pour limiter la propagation du virus, les gouvernements ont mis en place diverses mesures qui ont profondément modifié les endroits que nous avions l’habitude de fréquenter \[Google\]. Par conséquent, nos visites au travail, pour faire les courses ou pour nos loisirs ont été impactées.
+La COVID-19, également appelée maladie à coronavirus 2019, a déclenché une pandémie mondiale sans précédent. Pour limiter la propagation du virus, les gouvernements ont mis en place diverses mesures qui ont profondément modifié les endroits que nous avions l’habitude de fréquenter [@Google]. Par conséquent, nos visites au travail, pour faire les courses ou pour nos loisirs ont été impactées.
 
 Cette étude vise à analyser les effets de la COVID-19, entre 2020 et 2022, sur les lieux fréquentés par la population active, en se concentrant sur les changements dans leur vie professionnelle et quotidienne.
 
