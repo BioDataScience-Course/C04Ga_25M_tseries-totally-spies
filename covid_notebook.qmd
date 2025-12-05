@@ -70,6 +70,7 @@ ts(covid1$maison, start = c(2020,46), frequency = 365)
 
 ```{r 2021}
 tsjob <- ts(covid1$job, start = c(2020,46), frequency = 365)
+plot(tsjob, xlab = "Temps [années]", ylab = "Déplacements jusqu'au travail", main = "Déplacements des travailleurs pendant le Covid")
 ```
 
 ```{r 2021acf}
@@ -88,6 +89,11 @@ plot(tsdjob)
 ```
 
 ### Juliette
+
+```{r evf}
+tsd_evf <- tsd(tsjob, method = "evf", lag = 28, axes = 1)
+plot(tsd_evf)
+```
 
 2022
 
