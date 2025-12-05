@@ -76,15 +76,11 @@ tsjob <- ts(covid1$job, start = c(2020,46), frequency = 365)
 acf(tsjob)
 ```
 
-l'acf montre qu'il existe potentiellement une tendnace générale à la diminution. Potentiellement la présence de cycle de fréquence 0,02 (correspondant à un cycle tous les 7jours plus ou moins)
-
-```{r extract}
-extract()
-```
+L'acf montre la présence de cycle de fréquence 0,02 (correspondant à un cycle tous les 7jours plus ou moins).
 
 ```{r loess}
-tsdjob <- tsd(tsjob, method = "loess", s.window = 7, trend = TRUE)
-plot(tsdjob)
+loessjob <- tsd(tsjob, method = "loess", s.window = 7, trend = TRUE)
+plot(loessjob)
 ```
 
 ### Juliette
