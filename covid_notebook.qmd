@@ -66,10 +66,10 @@ covid %>.%
 ts(covid1$maison, start = c(2020,46), frequency = 365)
 ```
 
-### 2021
+### Occupation professionnelle
 
-```{r2021}
-
+```{r 2021}
+ts(covid1$job, start = c(2020,46), frequency = 365)
 ```
 
 ### 2022
