@@ -109,49 +109,72 @@ plot(decompmaison2, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos
 
 ### Série 2 : Occupation professionnelle
 
-```{r 2021}
+```{r tsjob}
 tsjob <- ts(covid1$job, start = c(2020,46), frequency = 365)
 plot(tsjob, xlab = "Temps [années]", ylab = "Déplacements jusqu'au travail", main = "Déplacements des travailleurs pendant le Covid")
 ```
 
-```{r 2021acf}
+```{r acfjob}
 acf(tsjob)
 ```
 
-L'acf montre qu'il existe potentiellement une tendnace générale à la diminution. Potentiellement la présence de cycle de fréquence 0,02 (correspondant à un cycle tous les 7jours plus ou moins. Les travailleurs se déplacent beaucoup en semaine, peu le week-end.
-
-```{r}
-tsd_evf <- tsd(tsjob, method = "evf", lag = 28, axes = 1)
-plot(tsd_evf)
-```
+L'acf montre qu'il existe potentiellement une tendnace générale à la diminution. Potentiellement la présence de cycle de fréquence 0,02 (correspondant à un cycle tous les 7jours plus ou moins. Les travailleurs se déplacent beaucoup en semaine, peu le week-end. Nous vérifierons cette dernière affirmation avec les graphiques suivant.
 
 ```{r semaine}
-covidj <- covid
+covidsemj <- covid
 # Calcul des jours de la semaine
-covidj$weekdays <- weekdays(as.POSIXct(covidj$date))
+covidsemj$weekdays <- weekdays(as.POSIXct(covidsemj$date))
 # Les données du week-end sont remplacées par des valeurs manquantes
-covidj[covidj$weekdays == "Saturday" | covidj$weekdays == "Sunday" , 2:7] <- NA 
+covidsemj[covidsemj$weekdays == "Saturday" | covidsemj$weekdays == "Sunday" , 2:7] <- NA 
 # La série temporelle est créée (début le 15 février 2020 = 46e jour de l'année 2020)
-covidj_ts <- ts(covidj$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
-plot(covidj_ts)
+covidsemj_ts <- ts(covidsemj$workplaces_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+plot(covidsemj_ts)
 # Aggrégation par moyenne des valeurs par semaine
-covidj_ts2 <- aggregate(covidj_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
-plot(covidj_ts2)
+covidsemj_ts2 <- aggregate(covidsemj_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+plot(covidsemj_ts2, main = "Déplacement durant la semaine aggrégé en semaines")
 ```
 
-```{r}
-covidj <- covid
+```{r we}
+covidwej <- covid
 # Calcul des jours de la semaine
-covidj$weekdays <- weekdays(as.POSIXct(covidj$date))
+covidwej$weekdays <- weekdays(as.POSIXct(covidwej$date))
 # Les données du week-end sont remplacées par des valeurs manquantes
-covidj[covidj$weekdays == "Saturday" | covidj$weekdays == "Sunday" , 2:7] <- NA 
+covidwej[covidwej$weekdays == "Monday" |
+        covidwej$weekdays == "Tuesday" |
+        covidwej$weekdays == "Wednesday" |
+        covidwej$weekdays == "Thursday" |
+        covidwej$weekdays == "Friday", 2:7] <- NA
 # La série temporelle est créée (début le 15 février 2020 = 46e jour de l'année 2020)
-covidj_ts <- ts(covidj$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
-plot(covidj_ts)
+covidwej_ts <- ts(covidwej$workplaces_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+plot(covidwej_ts)
 # Aggrégation par moyenne des valeurs par semaine
-covidj_ts2 <- aggregate(covidj_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
-plot(covidj_ts2)
+covidwej_ts2 <- aggregate(covidwej_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+plot(covidwej_ts2, main = "Déplacement durant le WE aggrégé en semaines")
 ```
+
+```{r combinaison}
+plot(tsjob,
+     main = "Déplacement hebdomadaire des travailleurs pendant le Covid",
+     xlab = "Année",
+     ylab = "Déplacement jusqu'au travail",
+     col = "lightgrey",
+     lwd = 1)
+
+#Série semaine
+lines(covidsemj_ts2, col = "#FFA500" , lwd = 2)
+
+#Série WE
+lines(covidwej_ts2, col = "violet", lwd = 2)
+
+#Légende
+legend("bottomright",
+       legend = c("Brute", "Semaine", "Week-end"),
+       col = c("lightgrey", "#FFA500", "violet"),
+       lwd = c(1, 2, 2),
+       bty = "n")
+```
+
+--\> Laisser juliette commenter de si oui ou non finalement il y a plus de déplacement les We que la semaine et si on voit un changement au cours du temps. (NB se renseigner sur ce que les valeurs Y veulent dire. Genre c'est un nombre de déplacement, un km,...? Je te laisse regarder mais si t'a sune moindre question hésite pas mais comme ça on fait un peu moit-moit)
 
 ### Activités
 
