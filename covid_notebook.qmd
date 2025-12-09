@@ -179,7 +179,7 @@ legend("bottomright",
 ### Activités
 
 ```{r activites}
-activite <- ts(covid1$activité, start = c(2020,46), frequency = 365)
+activite_ts <- ts(covid1$activité, start = c(2020,46), frequency = 365)
 plot(activite_ts)
 ```
 
@@ -195,7 +195,7 @@ activite_evf <- tsd(activite, method = "evf", lag = 30, axes = c(1,2))
 plot(activite_evf, col = 1:3)
 ```
 
-Un filtrage de methode de medianes permet
+Un filtrage de methode de medianes a ete realise
 
 ```{r median}
 activite_med <- tsd(activite, method = "median", order = 30
@@ -204,6 +204,10 @@ plot(activite_med, col = 1:2)
 plot(activite_med, stack = FALSE, resid = FALSE, col = c("grey50", "blue"),lpos = c(750, -40))
 ```
 
+Separation en jours de la semaines et week-end
+
+elimination des weekends
+
 ```{r}
 covidw <- covid
 # Calcul des jours de la semaine
@@ -211,12 +215,14 @@ covidw$weekdays <- weekdays(as.POSIXct(covidw$date))
 # Les données du week-end sont remplacées par des valeurs manquantes
 covidw[covidw$weekdays == "Saturday" | covidw$weekdays == "Sunday" , 2:7] <- NA 
 # La série temporelle est créée (début le 15 février 2020 = 46e jour de l'année 2020)
-covida_ts <- ts(covidw$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
-plot(covida_ts)
+covidaw_ts <- ts(covidw$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+plot(covidaw_ts)
 # Aggrégation par moyenne des valeurs par semaine
-covida_ts2 <- aggregate(covida_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
-plot(covida_ts2)
+covidaw_ts2 <- aggregate(covidaw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+plot(covidaw_ts2)
 ```
+
+Methodes de filtrages par EVF pour les jours de la semaines.
 
 ```{r}
 activite_w_evf <- tsd(activite, method = "evf", lag = 30, axes = 1)
@@ -224,9 +230,11 @@ plot(activite_w_evf, col = 1:3)
 ```
 
 ```{r}
-activite_w_evf <- tsd(activite, method = "evf", lag = 30, axes = 1)
+activite_w_evf <- tsd(activite, method = "evf", lag = 30, axes = 1:2)
 plot(activite_w_evf, col = 1:3)
 ```
+
+Methode des medianes pour la serie temporelles des jours.
 
 ```{r}
 activite_w_med <- tsd(activite, method = "median", order = 30
@@ -235,9 +243,47 @@ plot(activite_w_med, col = 1:2)
 plot(activite_w_med, stack = FALSE, resid = FALSE, col = c("grey50", "blue"),lpos = c(750, -40))
 ```
 
+elimination des jours de la semaine
+
+```{r}
+# Copie de la série initiale sous une autre nom
+covid_we <- covid
+# Calcul des jours de la semaine
+covid_we$weekdays <- weekdays(as.POSIXct(covid_we$date))
+# Les données du week-end sont remplacées par des valeurs manquantes
+covid_we[covid_we$weekdays == "Monday" | covid_we$weekdays == "Tuesday"| covid_we$weekdays == "Wednesday" |covid_we$weekdays == "Thursday" | covid_we$weekdays == "Friday" , 2:7] <- NA 
+covidawe_ts <- ts(covid_we$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+plot(covidawe_ts)
+# Aggrégation par moyenne des valeurs par semaine
+covidawe_ts2 <- aggregate(covida_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+plot(covidawe_ts2)
+```
+
+```{r}
+plot(activite_ts,
+     main = " Deplacement vers les commerces et loisirs pendant le Covid",
+     xlab = "Année",
+     ylab = "Déplacement vers les commerces et loisirs",
+     col = "lightgrey",
+     lwd = 1)
+
+#Série semaine
+lines(covidaw_ts2, col = "#FFA500" , lwd = 2)
+
+#Série WE
+lines(covidawe_ts2, col = "violet", lwd = 2)
+
+#Légende
+legend("bottomright",
+       legend = c("Brute", "Semaine", "Week-end"),
+       col = c("lightgrey", "#FFA500", "violet"),
+       lwd = c(1, 2, 2),
+       bty = "n")
+```
+
 ### Comparaison des années
 
-```{rcompa}
+```{r compa}
 
 ```
 
