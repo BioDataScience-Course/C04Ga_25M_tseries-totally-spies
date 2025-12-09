@@ -178,6 +178,8 @@ legend("bottomright",
 
 ### Activités
 
+Interressons nous a la mobilite pour les lieux de commerces et loisirs.
+
 ```{r activites}
 activite_ts <- ts(covid1$activité, start = c(2020,46), frequency = 365)
 plot(activite_ts)
@@ -186,77 +188,96 @@ plot(activite_ts)
 Un filtrage par EVF est realise pour debruites ma series
 
 ```{r}
-activite_evf <- tsd(activite, method = "evf", lag = 30, axes = 1)
-plot(activite_evf, col = 1:3)
+activite_evf1 <- tsd(activite_ts, method = "evf", lag = 30, axes = 1)
+plot(activite_evf1, col = 1:3)
 ```
 
 ```{r}
-activite_evf <- tsd(activite, method = "evf", lag = 30, axes = c(1,2))
-plot(activite_evf, col = 1:3)
+activite_evf2 <- tsd(activite_ts, method = "evf", lag = 30, axes = c(1,2))
+plot(activite_evf2, col = 1:3)
 ```
+
+Il y a une diminution drastiques des déplacements vers les commerces et activitées de loisirs au début de 2020. Cette diminution est suivie d'une forte augmentation des déplacements vers les commerces et loisirs 3 mois plus tard. Un palier est observé ensuite. Il y a une légere rechute fin 2020 avec une augmentation progressive de mobilité pour les commerces et loisirs au début 2021. Cette augmentation se stabilise durant l'année 2021 et fluctuent tres peut au cours de l'année 2022. On remarque que les déplacements vers les commerces et loisirs est légerement superieur a partir de 2021 par rapport au premiere mesures de 2020.
+
+On choisira le filtrage par evf avec un seul axe pour le rapport car il permet d'avoir une meilleur comprehension générale de la serie temporelle.
 
 Un filtrage de methode de medianes a ete realise
 
 ```{r median}
-activite_med <- tsd(activite, method = "median", order = 30
+activite_med <- tsd(activite_ts, method = "median", order = 30
   )
 plot(activite_med, col = 1:2)
 plot(activite_med, stack = FALSE, resid = FALSE, col = c("grey50", "blue"),lpos = c(750, -40))
 ```
 
-Separation en jours de la semaines et week-end
+La forme globale de la série temporelle est presque identique avec celle du filtrages par EVF. Dans ce graphiques, les pics sont remplacés par des paliers, ce qui est conforme a la méthodes par mediane mobiles. Cette méthode est plus visuelle mais n'apporte pas d'infos plus précises que le filtrages EVF.
 
-elimination des weekends
+Pour clarifier la situation un graphique rassemblant les deux méthodes de filtrages et la série brutes a été réalisé.
 
 ```{r}
-covidw <- covid
+activite_trend <- extract(activite_evf1, components = "filtered")
+activite_trend_med <- extract(activite_med, components = "filtered")
+plot(activite_ts, 
+  main = "Déplacement journalier des citoyens vers les commercerces et loisirs",
+     xlab = "Année",
+     ylab = "Déplacement jusqu'au commerces et loisirs",
+     col = "grey",
+     lwd = 1)
+lines(activite_trend, col = "#FFA500" , lwd = 2)
+lines(activite_trend_med, col = "blue" , lwd = 2)
+legend("bottomright",
+       legend = c("Brute", "EVF", "Medianes"),
+       col = c("grey", "#FFA500", "blue"),
+       lwd = c(1, 2, 2),
+       bty = "n")
+```
+
+Ce graphique permet de visualiser le peu de différences entre les méthodes de filtrages.
+
+Pour la suite de l'analyse, les jours de la semaine et les weekends ont été séparés pour comparer les déplacements pour les commerces et les loisirs.
+
+Séries temporelles des jours de la semaine
+
+```{r}
+covidaw <- covid
 # Calcul des jours de la semaine
-covidw$weekdays <- weekdays(as.POSIXct(covidw$date))
+covidaw$weekdays <- weekdays(as.POSIXct(covidw$date))
 # Les données du week-end sont remplacées par des valeurs manquantes
-covidw[covidw$weekdays == "Saturday" | covidw$weekdays == "Sunday" , 2:7] <- NA 
+covidaw[covidaw$weekdays == "Saturday" | covidaw$weekdays == "Sunday" , 2:7] <- NA 
 # La série temporelle est créée (début le 15 février 2020 = 46e jour de l'année 2020)
-covidaw_ts <- ts(covidw$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+covidaw_ts <- ts(covidaw$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
 plot(covidaw_ts)
 # Aggrégation par moyenne des valeurs par semaine
 covidaw_ts2 <- aggregate(covidaw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidaw_ts2)
 ```
 
-Methodes de filtrages par EVF pour les jours de la semaines.
+Methodes de LOESS pour decomposer la series.
 
 ```{r}
-activite_w_evf <- tsd(activite, method = "evf", lag = 30, axes = 1)
-plot(activite_w_evf, col = 1:3)
+activite_w_loess <- tsd(covidaw_ts2, method = "loess", s.window = 13)
+plot(activite_w_loess, col = 1:3)
 ```
 
-```{r}
-activite_w_evf <- tsd(activite, method = "evf", lag = 30, axes = 1:2)
-plot(activite_w_evf, col = 1:3)
-```
-
-Methode des medianes pour la serie temporelles des jours.
-
-```{r}
-activite_w_med <- tsd(activite, method = "median", order = 30
-  )
-plot(activite_w_med, col = 1:2)
-plot(activite_w_med, stack = FALSE, resid = FALSE, col = c("grey50", "blue"),lpos = c(750, -40))
-```
-
-elimination des jours de la semaine
+Elimination des jours de la semaine
 
 ```{r}
 # Copie de la série initiale sous une autre nom
-covid_we <- covid
+covida_we <- covid
 # Calcul des jours de la semaine
-covid_we$weekdays <- weekdays(as.POSIXct(covid_we$date))
+covida_we$weekdays <- weekdays(as.POSIXct(covida_we$date))
 # Les données du week-end sont remplacées par des valeurs manquantes
-covid_we[covid_we$weekdays == "Monday" | covid_we$weekdays == "Tuesday"| covid_we$weekdays == "Wednesday" |covid_we$weekdays == "Thursday" | covid_we$weekdays == "Friday" , 2:7] <- NA 
-covidawe_ts <- ts(covid_we$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+covida_we[covida_we$weekdays == "Monday" | covida_we$weekdays == "Tuesday"| covida_we$weekdays == "Wednesday" |covida_we$weekdays == "Thursday" | covida_we$weekdays == "Friday" , 2:7] <- NA 
+covidawe_ts <- ts(covida_we$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
 plot(covidawe_ts)
 # Aggrégation par moyenne des valeurs par semaine
-covidawe_ts2 <- aggregate(covida_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+covidawe_ts2 <- aggregate(covidawe_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidawe_ts2)
+```
+
+```{r}
+activite_we_loess <- tsd(covidawe_ts2, method = "loess", s.window = 13)
+plot(activite_we_loess, col = 1:3)
 ```
 
 ```{r}
