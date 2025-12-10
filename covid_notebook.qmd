@@ -180,66 +180,125 @@ legend("bottomright",
 
 ### Activités
 
+Intérressons nous a la mobilité pour les lieux de commerces et loisirs.
+
 ```{r activites}
-activite <- ts(covid1$activité, start = c(2020,46), frequency = 365)
+activite_ts <- ts(covid1$activité, start = c(2020,46), frequency = 365)
 plot(activite_ts)
 ```
 
-Un filtrage par EVF est realise pour debruites ma series
+Un filtrage par EVF est réalisé pour débruités la séries
 
 ```{r}
-activite_evf <- tsd(activite, method = "evf", lag = 30, axes = 1)
-plot(activite_evf, col = 1:3)
+activite_evf1 <- tsd(activite_ts, method = "evf", lag = 30, axes = 1)
+plot(activite_evf1, col = 1:3)
 ```
 
 ```{r}
-activite_evf <- tsd(activite, method = "evf", lag = 30, axes = c(1,2))
-plot(activite_evf, col = 1:3)
+activite_evf2 <- tsd(activite_ts, method = "evf", lag = 30, axes = c(1,2))
+plot(activite_evf2, col = 1:3)
 ```
 
-Un filtrage de methode de medianes permet
+Il y a une diminution drastiques des déplacements vers les commerces et activités de loisirs au début de 2020. Cette diminution est suivie d'une forte augmentation des déplacements vers les commerces et loisirs 3 mois plus tard. Un palier est observé ensuite. Il y a une légere rechute fin 2020 avec une augmentation progressive de mobilité pour les commerces et loisirs au début 2021. Cette augmentation se stabilise durant l'année 2021 et fluctuent tres peut au cours de l'année 2022. On remarque que les déplacements vers les commerces et loisirs est légerement supérieur a partir de 2021 par rapport au premiere mesures de 2020.
+
+On choisira le filtrage par evf avec un seul axe pour le rapport car il permet d'avoir une meilleur compréhension générale de la série temporelle.
+
+Un filtrage de méthode de médianes a été réalisé
 
 ```{r median}
-activite_med <- tsd(activite, method = "median", order = 30
+activite_med <- tsd(activite_ts, method = "median", order = 30
   )
 plot(activite_med, col = 1:2)
 plot(activite_med, stack = FALSE, resid = FALSE, col = c("grey50", "blue"),lpos = c(750, -40))
 ```
 
+La forme globale de la série temporelle est presque identique avec celle du filtrages par EVF. Dans ce graphiques, les pics sont remplacés par des paliers, ce qui est conforme a la méthodes par mediane mobiles. Cette méthode est plus visuelle mais n'apporte pas d'infos plus précises que le filtrages EVF.
+
+Pour clarifier la situation un graphique rassemblant les deux méthodes de filtrages et la série brutes a été réalisé.
+
 ```{r}
-covidw <- covid
+activite_trend <- extract(activite_evf1, components = "filtered")
+activite_trend_med <- extract(activite_med, components = "filtered")
+plot(activite_ts, 
+  main = "Déplacement journalier des citoyens vers les commercerces et loisirs",
+     xlab = "Année",
+     ylab = "Déplacement jusqu'au commerces et loisirs",
+     col = "grey",
+     lwd = 1)
+lines(activite_trend, col = "#FFA500" , lwd = 2)
+lines(activite_trend_med, col = "blue" , lwd = 2)
+legend("bottomright",
+       legend = c("Brute", "EVF", "Medianes"),
+       col = c("grey", "#FFA500", "blue"),
+       lwd = c(1, 2, 2),
+       bty = "n")
+```
+
+Ce graphique permet de visualiser le peu de différences entre les méthodes de filtrages.
+
+Pour la suite de l'analyse, les jours de la semaine et les weekends ont été séparés pour comparer les déplacements pour les commerces et les loisirs.
+
+Séries temporelles des jours de la semaine
+
+```{r}
+covidaw <- covid
 # Calcul des jours de la semaine
-covidw$weekdays <- weekdays(as.POSIXct(covidw$date))
+covidaw$weekdays <- weekdays(as.POSIXct(covidw$date))
 # Les données du week-end sont remplacées par des valeurs manquantes
-covidw[covidw$weekdays == "Saturday" | covidw$weekdays == "Sunday" , 2:7] <- NA 
+covidaw[covidaw$weekdays == "Saturday" | covidaw$weekdays == "Sunday" , 2:7] <- NA 
 # La série temporelle est créée (début le 15 février 2020 = 46e jour de l'année 2020)
-covida_ts <- ts(covidw$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
-plot(covida_ts)
+covidaw_ts <- ts(covidaw$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+plot(covidaw_ts)
 # Aggrégation par moyenne des valeurs par semaine
-covida_ts2 <- aggregate(covida_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
-plot(covida_ts2)
+covidaw_ts2 <- aggregate(covidaw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+plot(covidaw_ts2)
 ```
 
-```{r}
-activite_w_evf <- tsd(activite, method = "evf", lag = 30, axes = 1)
-plot(activite_w_evf, col = 1:3)
-```
+Elimination des jours de la semaine
 
 ```{r}
-activite_w_evf <- tsd(activite, method = "evf", lag = 30, axes = 1)
-plot(activite_w_evf, col = 1:3)
+# Copie de la série initiale sous une autre nom
+covida_we <- covid
+# Calcul des jours de la semaine
+covida_we$weekdays <- weekdays(as.POSIXct(covida_we$date))
+# Les données du week-end sont remplacées par des valeurs manquantes
+covida_we[covida_we$weekdays == "Monday" | covida_we$weekdays == "Tuesday"| covida_we$weekdays == "Wednesday" |covida_we$weekdays == "Thursday" | covida_we$weekdays == "Friday" , 2:7] <- NA 
+covidawe_ts <- ts(covida_we$retail_and_recreation_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+plot(covidawe_ts)
+# Aggrégation par moyenne des valeurs par semaine
+covidawe_ts2 <- aggregate(covidawe_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+plot(covidawe_ts2)
 ```
 
+Comparaison des tendances de mobilités pour les commerces et loisirs
+
 ```{r}
-activite_w_med <- tsd(activite, method = "median", order = 30
-  )
-plot(activite_w_med, col = 1:2)
-plot(activite_w_med, stack = FALSE, resid = FALSE, col = c("grey50", "blue"),lpos = c(750, -40))
+plot(activite_ts,
+     main = " Déplacement vers les commerces et loisirs pendant le Covid",
+     xlab = "Année",
+     ylab = "Déplacement vers les commerces et loisirs",
+     col = "lightgrey",
+     lwd = 1)
+
+#Série semaine
+lines(covidaw_ts2, col = "#FFA500" , lwd = 2)
+
+#Série WE
+lines(covidawe_ts2, col = "violet", lwd = 2)
+
+#Légende
+legend("bottomright",
+       legend = c("Brute", "Semaine", "Week-end"),
+       col = c("lightgrey", "#FFA500", "violet"),
+       lwd = c(1, 2, 2),
+       bty = "n")
 ```
+
+En début 2020, les déplacements vers les commerces et loisirs la semaine et le week-end sont tres proches et diminuent fortement comme vu précedement. il y a ensuite une augmentation 3 mois plus tard avec également peu de différence entre les jours de la semaine et le week-end. la fin d'anné de 2021est marquée par une diminution de fréquentations des commerces et loisirs. Pendant l'année 2021, les déplacements vers le commerces et les loisirs est plus faibles le week-endque la semaine. Cela reste similaire le restant de l'année 2021. A partir de 2022 la mobilité vers les commerces et loisirs le week-end est légerement plus élevé que la semaine.
 
 ### Comparaison des années
 
-```{rcompa}
+```{r compa}
 
 ```
 
