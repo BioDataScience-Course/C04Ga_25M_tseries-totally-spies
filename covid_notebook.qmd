@@ -178,14 +178,14 @@ legend("bottomright",
 
 ### Activités
 
-Interressons nous a la mobilite pour les lieux de commerces et loisirs.
+Intérressons nous a la mobilité pour les lieux de commerces et loisirs.
 
 ```{r activites}
 activite_ts <- ts(covid1$activité, start = c(2020,46), frequency = 365)
 plot(activite_ts)
 ```
 
-Un filtrage par EVF est realise pour debruites ma series
+Un filtrage par EVF est réalisé pour débruités la séries
 
 ```{r}
 activite_evf1 <- tsd(activite_ts, method = "evf", lag = 30, axes = 1)
@@ -197,11 +197,11 @@ activite_evf2 <- tsd(activite_ts, method = "evf", lag = 30, axes = c(1,2))
 plot(activite_evf2, col = 1:3)
 ```
 
-Il y a une diminution drastiques des déplacements vers les commerces et activitées de loisirs au début de 2020. Cette diminution est suivie d'une forte augmentation des déplacements vers les commerces et loisirs 3 mois plus tard. Un palier est observé ensuite. Il y a une légere rechute fin 2020 avec une augmentation progressive de mobilité pour les commerces et loisirs au début 2021. Cette augmentation se stabilise durant l'année 2021 et fluctuent tres peut au cours de l'année 2022. On remarque que les déplacements vers les commerces et loisirs est légerement superieur a partir de 2021 par rapport au premiere mesures de 2020.
+Il y a une diminution drastiques des déplacements vers les commerces et activités de loisirs au début de 2020. Cette diminution est suivie d'une forte augmentation des déplacements vers les commerces et loisirs 3 mois plus tard. Un palier est observé ensuite. Il y a une légere rechute fin 2020 avec une augmentation progressive de mobilité pour les commerces et loisirs au début 2021. Cette augmentation se stabilise durant l'année 2021 et fluctuent tres peut au cours de l'année 2022. On remarque que les déplacements vers les commerces et loisirs est légerement supérieur a partir de 2021 par rapport au premiere mesures de 2020.
 
-On choisira le filtrage par evf avec un seul axe pour le rapport car il permet d'avoir une meilleur comprehension générale de la serie temporelle.
+On choisira le filtrage par evf avec un seul axe pour le rapport car il permet d'avoir une meilleur compréhension générale de la série temporelle.
 
-Un filtrage de methode de medianes a ete realise
+Un filtrage de méthode de médianes a été réalisé
 
 ```{r median}
 activite_med <- tsd(activite_ts, method = "median", order = 30
@@ -252,13 +252,6 @@ covidaw_ts2 <- aggregate(covidaw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidaw_ts2)
 ```
 
-Methodes de LOESS pour decomposer la series.
-
-```{r}
-activite_w_loess <- tsd(covidaw_ts2, method = "loess", s.window = 13)
-plot(activite_w_loess, col = 1:3)
-```
-
 Elimination des jours de la semaine
 
 ```{r}
@@ -275,14 +268,11 @@ covidawe_ts2 <- aggregate(covidawe_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidawe_ts2)
 ```
 
-```{r}
-activite_we_loess <- tsd(covidawe_ts2, method = "loess", s.window = 13)
-plot(activite_we_loess, col = 1:3)
-```
+Comparaison des tendances de mobilités pour les commerces et loisirs
 
 ```{r}
 plot(activite_ts,
-     main = " Deplacement vers les commerces et loisirs pendant le Covid",
+     main = " Déplacement vers les commerces et loisirs pendant le Covid",
      xlab = "Année",
      ylab = "Déplacement vers les commerces et loisirs",
      col = "lightgrey",
@@ -301,6 +291,8 @@ legend("bottomright",
        lwd = c(1, 2, 2),
        bty = "n")
 ```
+
+En début 2020, les déplacements vers les commerces et loisirs la semaine et le week-end sont tres proches et diminuent fortement comme vu précedement. il y a ensuite une augmentation 3 mois plus tard avec également peu de différence entre les jours de la semaine et le week-end. la fin d'anné de 2021est marquée par une diminution de fréquentations des commerces et loisirs. Pendant l'année 2021, les déplacements vers le commerces et les loisirs est plus faibles le week-endque la semaine. Cela reste similaire le restant de l'année 2021. A partir de 2022 la mobilité vers les commerces et loisirs le week-end est légerement plus élevé que la semaine.
 
 ### Comparaison des années
 
