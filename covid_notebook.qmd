@@ -29,7 +29,7 @@ Cette étude vise à analyser les effets de la COVID-19, entre 2020 et 2022, sur
 
 <!--% Indiquez ici d'où viennent les données et aussi quel logiciel (et version) vous utilisez pour les analyses. Inspirez-vous des projets déjà réalisés. -->
 
-Les données sur la mobilité en Wallonie durant le Covid-19 proviennent de \[\]
+Les données sur la mobilité en Wallonie durant le Covid-19 proviennent de \[Google\]. Google met aussi à disposition trois rapports, un pour chaque année d'intérêt, qui décrivent les données.
 
 L'analyse est réalisée avec la SciViews Box 2025 dans Saturn Cloud (Linux), utilisant le logiciel R (r R.version.string). Le package {pastecs} version r packageVersion("pastecs") est utilisé pour étudier la série temporelle.
 
@@ -109,7 +109,7 @@ plot(decompmaison2)
 plot(decompmaison2, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos = "topright", xlab = "Temps passé à la maison", main = "Evolution du temps passé à la maison entre 2020 et 2022")
 ```
 
-### Série 2 : Occupation professionnelle
+### Série 2 : Déplacements jusqu'au travail en fonction de l'évolution du Covid-19
 
 ```{r tsjob}
 tsjob <- ts(covid1$job, start = c(2020,46), frequency = 365)
@@ -176,7 +176,9 @@ legend("bottomright",
        bty = "n")
 ```
 
---\> Laisser juliette commenter de si oui ou non finalement il y a plus de déplacement les We que la semaine et si on voit un changement au cours du temps. (NB se renseigner sur ce que les valeurs Y veulent dire. Genre c'est un nombre de déplacement, un km,...? Je te laisse regarder mais si t'a sune moindre question hésite pas mais comme ça on fait un peu moit-moit)
+On peut voir que les gens semblent plus se déplacer pour se rendre au travail pendant le weekend que pendant la semaine tout au long du Covid. Cela peut être expliqué par le fait que les personnes qui n'avaient pas le choix que de travailler comme les commerçants dans l'alimentaire, le personnel soignant, etc étaient les seuls à se déplacer le weekend alors que tous les autres étaient priés de rester chez eux.
+
+J'ai regardé pour les valeurs et à part dire que c'est une augmentation ou une diminution par rapport à une valeur médiane, ils ne disent rien d'autre. Je vais voir avec les autres s'ils ont l'info.
 
 ### Activités
 
@@ -199,7 +201,7 @@ activite_evf2 <- tsd(activite_ts, method = "evf", lag = 30, axes = c(1,2))
 plot(activite_evf2, col = 1:3)
 ```
 
-Il y a une diminution drastiques des déplacements vers les commerces et activités de loisirs au début de 2020. Cette diminution est suivie d'une forte augmentation des déplacements vers les commerces et loisirs 3 mois plus tard. Un palier est observé ensuite. Il y a une légere rechute fin 2020 avec une augmentation progressive de mobilité pour les commerces et loisirs au début 2021. Cette augmentation se stabilise durant l'année 2021 et fluctuent tres peut au cours de l'année 2022. On remarque que les déplacements vers les commerces et loisirs est légerement supérieur a partir de 2021 par rapport au premiere mesures de 2020.
+Il y a une diminution drastiques des déplacements vers les commerces et activités de loisirs au début de 2020. Cette diminution est suivie d'une forte augmentation des déplacements vers les commerces et loisirs 3 mois plus tard. Un palier est observé ensuite. Il y a une légère rechute fin 2020 avec une augmentation progressive de mobilité pour les commerces et loisirs au début 2021. Cette augmentation se stabilise durant l'année 2021 et fluctuent très peut au cours de l'année 2022. On remarque que les déplacements vers les commerces et loisirs est légèrement supérieur a partir de 2021 par rapport au première mesures de 2020.
 
 On choisira le filtrage par evf avec un seul axe pour le rapport car il permet d'avoir une meilleur compréhension générale de la série temporelle.
 
@@ -212,7 +214,7 @@ plot(activite_med, col = 1:2)
 plot(activite_med, stack = FALSE, resid = FALSE, col = c("grey50", "blue"),lpos = c(750, -40))
 ```
 
-La forme globale de la série temporelle est presque identique avec celle du filtrages par EVF. Dans ce graphiques, les pics sont remplacés par des paliers, ce qui est conforme a la méthodes par mediane mobiles. Cette méthode est plus visuelle mais n'apporte pas d'infos plus précises que le filtrages EVF.
+La forme globale de la série temporelle est presque identique avec celle du filtrages par EVF. Dans ce graphiques, les pics sont remplacés par des paliers, ce qui est conforme a la méthodes par médiane mobiles. Cette méthode est plus visuelle mais n'apporte pas d'infos plus précises que le filtrages EVF.
 
 Pour clarifier la situation un graphique rassemblant les deux méthodes de filtrages et la série brutes a été réalisé.
 
@@ -254,7 +256,7 @@ covidaw_ts2 <- aggregate(covidaw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidaw_ts2)
 ```
 
-Elimination des jours de la semaine
+Élimination des jours de la semaine
 
 ```{r}
 # Copie de la série initiale sous une autre nom
@@ -294,7 +296,7 @@ legend("bottomright",
        bty = "n")
 ```
 
-En début 2020, les déplacements vers les commerces et loisirs la semaine et le week-end sont tres proches et diminuent fortement comme vu précedement. il y a ensuite une augmentation 3 mois plus tard avec également peu de différence entre les jours de la semaine et le week-end. la fin d'anné de 2021est marquée par une diminution de fréquentations des commerces et loisirs. Pendant l'année 2021, les déplacements vers le commerces et les loisirs est plus faibles le week-endque la semaine. Cela reste similaire le restant de l'année 2021. A partir de 2022 la mobilité vers les commerces et loisirs le week-end est légerement plus élevé que la semaine.
+En début 2020, les déplacements vers les commerces et loisirs la semaine et le week-end sont très proches et diminuent fortement comme vu précédement. il y a ensuite une augmentation 3 mois plus tard avec également peu de différence entre les jours de la semaine et le week-end. la fin d'année de 2021est marquée par une diminution de fréquentations des commerces et loisirs. Pendant l'année 2021, les déplacements vers le commerces et les loisirs est plus faibles le week-end que la semaine. Cela reste similaire le restant de l'année 2021. A partir de 2022 la mobilité vers les commerces et loisirs le week-end est légèrement plus élevé que la semaine.
 
 ### Comparaison des années
 
