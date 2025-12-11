@@ -298,12 +298,6 @@ legend("bottomright",
 
 En début 2020, les déplacements vers les commerces et loisirs la semaine et le week-end sont très proches et diminuent fortement comme vu précédement. il y a ensuite une augmentation 3 mois plus tard avec également peu de différence entre les jours de la semaine et le week-end. la fin d'année de 2021est marquée par une diminution de fréquentations des commerces et loisirs. Pendant l'année 2021, les déplacements vers le commerces et les loisirs est plus faibles le week-end que la semaine. Cela reste similaire le restant de l'année 2021. A partir de 2022 la mobilité vers les commerces et loisirs le week-end est légèrement plus élevé que la semaine.
 
-### Comparaison des années
-
-```{r compa}
-
-```
-
 ## Conclusion
 
 <!--% Lorsque toutes les analyses sont réalisées, terminez ce bloc-notes avec 3 à 6 phrases de conclusion en rapport avec ce que vous avez observé dans vos analyses. Quels sont les éléments les plus pertinents que vous retenez ? -->
