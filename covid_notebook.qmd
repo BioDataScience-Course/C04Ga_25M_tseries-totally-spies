@@ -87,11 +87,7 @@ plot(maison_decomp, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos
 
 ```
 
-On peut voir dans ce graphique que nous avons une très grande augmentation du temps passée à la maison en 2020, cela correspond au moment du premier confinement, on voit aussi une seconde augmentation en 2021 ( entre 220 jours et 600jours), qui correpond confinement puis on assiste à une baisse progressive qui correspond au déconfinement progressif.
-
-Il est intéressant aussi de remarquer que en 2022 lors du retour à la "normale" le temps passée à la maison est légèrement plus haut que ce qu'il était au tout début 2020 avant le covid.
-
-Essayons maintenant de reproduire notre analyse, en prenant en compte les jours et weekend :
+Essayons maintenant de reproduire notre analyse, en prenant en compte seuleument les jours de la semaine ( qui sont en théorie les jours où en temps normal les gens sont moins souvent chez eux). Nous faisons aussi une moyenne pour avoir une valeur pour chaque semaine de l'année.
 
 ```{r}
 covidw <- covid
@@ -109,13 +105,17 @@ tsp(covidw_ts2)
 ```
 
 ```{r decompmaison2}
-decompmaison2 <-tsd(covidw_ts2, method = "median", order = 2, times = 10)
+decompmaison2 <-tsd(covidw_ts2, method = "median", order = 1, times = 10)
 plot(decompmaison2)
 ```
 
 ```{r}
 plot(decompmaison2, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos = "topright", xlab = "Temps passé à la maison", main = "Evolution du temps passé à la maison entre 2020 et 2022")
 ```
+
+On peut voir dans ce graphique que nous avons une très grande augmentation du temps passée à la maison en 2020, cela correspond au moment du premier confinement, on voit aussi une seconde augmentation en 2021 ( entre la 30ème jours et 80èmejours), qui correpond confinement puis on assiste à une baisse progressive qui correspond au déconfinement progressif.
+
+On peut aussi noter que en 2022 lors du retour à la "normale" le temps passée à la maison est légèrement plus haut que ce qu'il était au tout début 2020 avant le covid.
 
 ### Série 2 : Déplacements jusqu'au travail en fonction de l'évolution du Covid-19
 
