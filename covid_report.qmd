@@ -17,9 +17,13 @@ lang: fr
 
 <!--% Rédigez l'introduction de ce rapport.-->
 
+La COVID-19, également appelée maladie à coronavirus 2019, a déclenché une pandémie mondiale sans précédent. Pour limiter la propagation du virus, les gouvernements ont mis en place diverses mesures qui ont profondément modifié les endroits que nous avions l’habitude de fréquenter [@Google]. Par conséquent, nos visites au travail, pour faire les courses ou pour nos loisirs ont été impactées.
+
 ## But
 
 <!--% Rédigez le but de ce rapport.-->
+
+Cette étude vise à analyser les effets de la COVID-19, entre 2020 et 2022, sur les lieux fréquentés par la population active, en se concentrant sur les changements dans leur vie professionnelle et quotidienne.
 
 ## Matériel et méthodes
 
@@ -28,6 +32,28 @@ lang: fr
 ## Résultats
 
 <!--% Présentez les analyses les plus pertinents que vous avez sélectionnés. Structurez la section en partie avec des titres explicites de niveau trois.-->
+
+```{r setup, include=FALSE}
+# Nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
+if (!"tools:tests" %in% search())
+  source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+# Configuration de l'environnement
+SciViews::R("ts")
+```
+
+```{r Import}
+covid <- read$rds("data/mobility_wallonia.rds")
+```
+
+```{r varnames}
+covid %>.%
+  sselect(., retail_and_recreation_percent_change_from_baseline, workplaces_percent_change_from_baseline, residential_percent_change_from_baseline) %>.%
+  srename(., 
+    retail_and_recreation_percent_change_from_baseline = "activité",
+    workplaces_percent_change_from_baseline = "job",
+    residential_percent_change_from_baseline = "maison") -> 
+  covid1
+```
 
 ### Evolution du temps passée à la maison au cours du temps
 
