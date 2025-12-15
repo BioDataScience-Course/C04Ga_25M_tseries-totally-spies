@@ -220,7 +220,7 @@ spectrum(seasonal, spans = c(3,5))
 
 Cycle signifiactif à une fréquence de 52. 365/52 = +/- 7j. Je ne sais pa si on doit prendre en compte les valeurs du début.
 
-### Activités
+### Série 3 : Activités
 
 Intérressons nous a la mobilité pour les lieux de commerces et loisirs.
 
