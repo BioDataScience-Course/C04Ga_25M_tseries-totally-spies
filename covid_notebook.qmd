@@ -39,7 +39,7 @@ Les données sur la mobilité en Wallonie durant le Covid-19 proviennent de \[Go
 
 Les valeurs sur l'axe des ordonnées représentent une variation par rapport à une référence. Celle-ci est la valeur de la médiane calculée, pour un jour donné, sur la période entre le 3 janvier et le 6 février 2020.
 
-L'analyse est réalisée avec la SciViews Box 2025 dans Saturn Cloud (Linux), utilisant le logiciel R (r R.version.string). Le package {pastecs} version r packageVersion("pastecs") est utilisé pour étudier la série temporelle.
+L'analyse est réalisée avec la [SciViews Box 2025](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux), utilisant le [logiciel R](https://www.r-project.org) (`r R.version.string`). Le package {pastecs} version `r packageVersion("pastecs")` est utilisé pour étudier la série temporelle.
 
 ## Analyses
 
@@ -203,8 +203,8 @@ J'ai regardé pour les valeurs et à part dire que c'est une augmentation ou une
 Séparer tendance générale de cycle après avoir vu notre acf:
 
 ```{r loess}
-job_loess <- tsd(tsjob, method = "loess", s.window = 8, trend = TRUE)
-plot(job_loess, col = 1:3)
+job_av <- tsd(covidsemj, method = "average", order = 5)
+plot(job_av, col = 1:3)
 ```
 
 Cycle de vacances? Gros truc de résidus...? Besoin d'aide sur ca pour en faire une analyse spectrale après aussi
