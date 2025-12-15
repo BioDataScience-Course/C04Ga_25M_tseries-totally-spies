@@ -239,7 +239,7 @@ activite_evf2 <- tsd(activite_ts, method = "evf", lag = 30, axes = c(1,2))
 plot(activite_evf2, col = 1:3)
 ```
 
-Il y a une diminution drastiques des déplacements vers les commerces et activités de loisirs au début de 2020. Cette diminution est suivie d'une forte augmentation des déplacements vers les commerces et loisirs 3 mois plus tard. Un palier est observé ensuite. Il y a une légère rechute fin 2020 avec une augmentation progressive de mobilité pour les commerces et loisirs au début 2021. Cette augmentation se stabilise durant l'année 2021 et fluctuent très peut au cours de l'année 2022. On remarque que les déplacements vers les commerces et loisirs est légèrement supérieur a partir de 2021 par rapport au première mesures de 2020.
+Il y a une diminution drastiques des déplacements vers les commerces et activités de loisirs au début de 2020. Cette diminution est suivie d'une forte augmentation des déplacements vers les commerces et loisirs 3 mois plus tard. Un palier est observé ensuite. Il y a une légère rechute fin 2020 avec une augmentation progressive de mobilité pour les commerces et loisirs au début 2021. Cette augmentation se stabilise durant l'année 2021 et fluctuent très peu au cours de l'année 2022. On remarque que les déplacements vers les commerces et loisirs est légèrement supérieur a partir de 2021 par rapport au première mesures de 2020.
 
 On choisira le filtrage par evf avec un seul axe pour le rapport car il permet d'avoir une meilleur compréhension générale de la série temporelle.
 
