@@ -192,6 +192,8 @@ legend("bottomright",
        col = c("lightgrey", "#FFA500", "violet"),
        lwd = c(1, 2, 2),
        bty = "n")
+
+abline(v = c(2021.1123, 2022), lty = 2, col = "gray")
 ```
 
 On peut voir que les gens semblent plus se déplacer pour se rendre au travail pendant le weekend que pendant la semaine tout au long du Covid. Cela peut être expliqué par le fait que les personnes qui n'avaient pas le choix que de travailler comme les commerçants dans l'alimentaire, le personnel soignant, etc étaient les seuls à se déplacer le weekend alors que tous les autres étaient priés de rester chez eux.
