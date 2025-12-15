@@ -59,7 +59,7 @@ covid %>.%
 
 Pour cette partie, il est plus pertinent de se consacrer uniquement aux jours de la semaine : En temps normal, les gens sont d'office plus souvent à la maison le weekend qu'il y ait covid ou pas covid, nous enlevons donc les weekends afin de clarifier une première notre série. Nous allons donc voir l'effet du covid sur le temps passée à la maison en semaine.
 
-```{r}
+```{r aggregate maison}
 covidw <- covid
 # Calcul des jours de la semaine
 covidw$weekdays <- weekdays(as.POSIXct(covidw$date))
@@ -95,6 +95,6 @@ Il est intéressant aussi de remarquer que en 2022 lors du retour à la "normale
 
 <!--% En tenant compte du but de votre carnet de notes et de vos résultats, discutez de résultats et proposez des conclusions à votre analyse en 5 à 10 phrases. -->
 
-Tout d'abord, nous avons regarder l'évolution du temps passée à la maison en fonction du temps, nos résultats sont cohérent avec les événements qui se sont produits durant la pandémie de covid : un premier confinement très strict en 2020 ( très nette augmentation du temps passée à la maison), ensuite en 2021 une suite de plusieurs confinements et déconfinements progressifs a eu lieu, cela est bien représenté dans notre analyse. En 2023, lors du retour à la "normale", on constate que le temps à la maison est légérement supérieur à ce qu'il était tout début 2020, c'est peut-être un effet de la pandémie.
+Tout d'abord, nous avons regarder l'évolution du temps passée à la maison en fonction du temps, nos résultats sont cohérent avec les événements qui se sont produits durant la pandémie de covid : un premier confinement très strict en 2020 ( très nette augmentation du temps passée à la maison), ensuite en 2021 une suite de plusieurs confinements et déconfinements progressifs a eu lieu, cela est bien représenté dans notre analyse. En 2023, lors du retour à la "normale", on constate que le temps à la maison est légèrement supérieur à ce qu'il était tout début 2020, c'est peut-être un effet de la pandémie.
 
 Ensuite,
