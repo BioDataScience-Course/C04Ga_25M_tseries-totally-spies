@@ -128,7 +128,7 @@ plot(tsjob, xlab = "Temps [années]", ylab = "Déplacements jusqu'au travail", m
 acf(tsjob)
 ```
 
-L'acf montre qu'il existe potentiellement une tendnace générale à la diminution. Potentiellement la présence de cycle de fréquence 0,02 (correspondant à un cycle tous les 7jours plus ou moins. Les travailleurs se déplacent beaucoup en semaine, peu le week-end. Nous vérifierons cette dernière affirmation avec les graphiques suivant.
+L'acf montre qu'il existe potentiellement un cycle de fréquence 0,02 (correspondant à un cycle tous les 7jours plus ou moins.
 
 ```{r semaine}
 covidsemj <- covid
@@ -142,6 +142,11 @@ plot(covidsemj_ts)
 # Aggrégation par moyenne des valeurs par semaine
 covidsemj_ts2 <- aggregate(covidsemj_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidsemj_ts2, main = "Déplacement durant la semaine aggrégé en semaines")
+```
+
+```{r tsdsemaine}
+job_av <- tsd(covidsemj_ts2, method = "average", order = 5)
+plot(job_av, col = 1:3)
 ```
 
 ```{r we}
@@ -162,11 +167,18 @@ covidwej_ts2 <- aggregate(covidwej_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidwej_ts2, main = "Déplacement durant le WE aggrégé en semaines")
 ```
 
+```{r }
+job_we <- tsd(covidwej_ts2, method = "average", order = 5)
+plot(job_we, col = 1:3)
+```
+
 ```{r toute la sem}
 plot(tsjob)
 # Aggrégation par moyenne des valeurs par semaine
 covid_tsjob2 <- aggregate(tsjob, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covid_tsjob2, main = "Déplacement au travail du Lundi au dimanche")
+job_ttsem <- tsd(covid_tsjob2, method = "average", order = 5)
+plot(job_ttsem, col = 1:3)
 ```
 
 ```{r combinaison}

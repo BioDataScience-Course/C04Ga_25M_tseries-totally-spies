@@ -76,7 +76,7 @@ covidw_ts <- ts(covidw$residential_percent_change_from_baseline, start = c(2020,
 # Aggrégation par moyenne des valeurs par semaine
 covidw_ts2 <- aggregate(covidw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidw_ts2)
-#tsp(covidw_ts2)
+#tsp(covidw_ts2
 ```
 
 ```{r decompmaison2}
