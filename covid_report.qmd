@@ -1,5 +1,5 @@
 ---
-title: "Mobilité en Wallonie avant et pendant la pandémie COVID-19"
+title: "Impact de la pandémie de Covid-19 sur la population wallonne (2020-2022)"
 author: "Basile Vandendyck, Mathilda Devries, Juliette Hayt, Norah Martin"
 format:
   pdf:
@@ -7,6 +7,7 @@ format:
     toc: true
 editor: visual
 lang: fr
+bibliography: references.bib
 ---
 
 <!--# Ce travail doit faire entre 15 et 20 pages.-->
@@ -17,13 +18,17 @@ lang: fr
 
 <!--% Rédigez l'introduction de ce rapport.-->
 
-La COVID-19, également appelée maladie à coronavirus 2019, a déclenché une pandémie mondiale sans précédent. Pour limiter la propagation du virus, les gouvernements ont mis en place diverses mesures qui ont profondément modifié les endroits que nous avions l’habitude de fréquenter [@Google]. Par conséquent, nos visites au travail, pour faire les courses ou pour nos loisirs ont été impactées.
+La pandémie de Covid-19 est apparue le 17 novembre 2019, avec les premiers cas détectés dans la ville de Wuhan, en Chine [@Unicef]. La maladie Covid-19 est provoquée par le coronavirus SARS-CoV-2 et entraîne des symptômes similaires à ceux de la grippe, tels que fièvre, toux, fatigue ou perte du goût et de l’odorat. Le virus se transmet principalement par les gouttelettes respiratoires, le contact direct avec une personne infectée ou le contact avec des surfaces contaminées [@yang2020sars].
+
+En février 2020, les premiers cas positifs ont été recensés sur le territoire belge. Afin de limiter la propagation du virus et d’éviter la saturation des hôpitaux, Sophie Wilmès, première ministre de l’époque, a mis en place un premier confinement total le 18 mars 2020 [@RTBF], qui prendra fin en mai 2020. Parmi les mesures mises en place figuraient, notamment, le port obligatoire du masque, le télétravail, la fermeture temporaire des écoles et des commerces [@LOC].
+
+Cependant, face à de nouvelles vagues de Covid-19, le gouvernement a décidé de mettre en place différentes mesures de prévention selon l’évolution de la situation [@vrtnws]. Ces mesures ont eu des conséquences sur la vie sociales et économiques importantes, ainsi que la mise en place de nouvelles mesures dans le secteur de l'enseignement.
 
 ## But
 
 <!--% Rédigez le but de ce rapport.-->
 
-Cette étude vise à analyser les effets de la COVID-19, entre 2020 et 2022, sur les lieux fréquentés par la population active, en se concentrant sur les changements dans leur vie professionnelle et quotidienne.
+L’objectif de cette étude est d’analyser, de 2020 à 2022, les effets de la COVID-19 sur les déplacements et les lieux fréquentés par la population wallonne.
 
 ## Matériel et méthodes
 
@@ -98,3 +103,5 @@ Il est intéressant aussi de remarquer que en 2022 lors du retour à la "normale
 Tout d'abord, nous avons regarder l'évolution du temps passée à la maison en fonction du temps, nos résultats sont cohérent avec les événements qui se sont produits durant la pandémie de covid : un premier confinement très strict en 2020 ( très nette augmentation du temps passée à la maison), ensuite en 2021 une suite de plusieurs confinements et déconfinements progressifs a eu lieu, cela est bien représenté dans notre analyse. En 2023, lors du retour à la "normale", on constate que le temps à la maison est légèrement supérieur à ce qu'il était tout début 2020, c'est peut-être un effet de la pandémie.
 
 Ensuite,
+
+## Références
