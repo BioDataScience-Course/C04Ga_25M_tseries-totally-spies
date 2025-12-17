@@ -29,13 +29,11 @@ Cette étude vise à analyser les effets de la COVID-19, entre 2020 et 2022, sur
 
 <!--% Indiquez ici d'où viennent les données et aussi quel logiciel (et version) vous utilisez pour les analyses. Inspirez-vous des projets déjà réalisés. -->
 
-Les données sur la mobilité en Wallonie durant le Covid-19 proviennent de \[Google\]. Google met aussi à disposition trois rapports, un pour chaque année d'intérêt, qui décrivent les données :
+Les données sur la mobilité en Wallonie durant la Covid-19 proviennent de [@Google]. Google met aussi à disposition trois rapports, un pour chaque année d'intérêt, qui décrivent les données :
 
--   <https://www.gstatic.com/covid19/mobility/2020-11-13_BE_Wallonia_Mobility_Report_fr.pdf>
-
--   <https://www.gstatic.com/covid19/mobility/2021-11-26_BE_Wallonia_Mobility_Report_fr.pdf>
-
--   <https://www.gstatic.com/covid19/mobility/2022-10-15_BE_Wallonia_Mobility_Report_fr.pdf>
+-   [Rapport de 2020](https://www.gstatic.com/covid19/mobility/2020-11-13_BE_Wallonia_Mobility_Report_fr.pdf)
+-   [Rapport de 2021](https://www.gstatic.com/covid19/mobility/2021-11-26_BE_Wallonia_Mobility_Report_fr.pdf)
+-   [Rapport de 2022](https://www.gstatic.com/covid19/mobility/2022-10-15_BE_Wallonia_Mobility_Report_fr.pdf)
 
 Les valeurs sur l'axe des ordonnées représentent une variation par rapport à une référence. Celle-ci est la valeur de la médiane calculée, pour un jour donné, sur la période entre le 3 janvier et le 6 février 2020.
 
@@ -195,17 +193,27 @@ lines(covidsemj_ts2, col = "#FFA500" , lwd = 2)
 #Série WE
 lines(covidwej_ts2, col = "violet", lwd = 2)
 
-#Série de tout
-lines(covid_tsjob2, col = "darkgrey", lwd = 1)
-
 #Légende
 legend("bottomright",
-       legend = c("Brute", "Semaine", "Week-end"),
-       col = c("lightgrey", "#FFA500", "violet"),
-       lwd = c(1, 2, 2),
+       legend = c("Semaine", "Week-end"),
+       col = c("#FFA500", "violet"),
+       lwd = c(2, 2),
        bty = "n")
 
-abline(v = c(2021.1123, 2022), lty = 2, col = "gray")
+abline(v = c(2020.213, 2020.341), lty = 2, col = "green")
+abline(v = c(2020.757), lty = 2, col = "red")
+```
+
+```{r combijobav}
+plot(job_av, stack = FALSE, resid = FALSE, col = c("grey90", "#FFA500"),lpos = c(110, -52))
+abline(v = c(5, 12), lty = 2, col = "green")
+abline(v = c(38), lty = 2, col = "red")
+```
+
+```{r combijob_we}
+plot(job_we, stack = FALSE, resid = FALSE, col = c("grey90", "violet"), lpos = c(110, -30))
+abline(v = c(5, 12), lty = 2, col = "green")
+abline(v = c(38), lty = 2, col = "red")
 ```
 
 On peut voir que les gens semblent plus se déplacer pour se rendre au travail pendant le weekend que pendant la semaine tout au long du Covid. Cela peut être expliqué par le fait que les personnes qui n'avaient pas le choix que de travailler comme les commerçants dans l'alimentaire, le personnel soignant, etc étaient les seuls à se déplacer le weekend alors que tous les autres étaient priés de rester chez eux.
@@ -213,11 +221,6 @@ On peut voir que les gens semblent plus se déplacer pour se rendre au travail p
 J'ai regardé pour les valeurs et à part dire que c'est une augmentation ou une diminution par rapport à une valeur médiane, ils ne disent rien d'autre. Je vais voir avec les autres s'ils ont l'info.
 
 Séparer tendance générale de cycle après avoir vu notre acf:
-
-```{r loess}
-job_av <- tsd(covidsemj, method = "average", order = 5)
-plot(job_av, col = 1:3)
-```
 
 Cycle de vacances? Gros truc de résidus...? Besoin d'aide sur ca pour en faire une analyse spectrale après aussi
 
@@ -232,7 +235,7 @@ spectrum(seasonal, spans = c(3,5))
 
 Cycle signifiactif à une fréquence de 52. 365/52 = +/- 7j. Je ne sais pa si on doit prendre en compte les valeurs du début.
 
-### Série 3 : Activités
+### Série 3 : Déplacements jusqu'au commerces et lieux de loisirs en fonction de l'évolution du Covid-19
 
 Intérressons nous a la mobilité pour les lieux de commerces et loisirs.
 
@@ -306,6 +309,11 @@ plot(covidaw_ts)
 # Aggrégation par moyenne des valeurs par semaine
 covidaw_ts2 <- aggregate(covidaw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidaw_ts2)
+```
+
+```{r}
+covidaw_ts2_mb <- tsd(covidaw_ts2, method = "average", order = 366, times = 1)
+plot(covidaw_ts2_mb)
 ```
 
 Élimination des jours de la semaine
