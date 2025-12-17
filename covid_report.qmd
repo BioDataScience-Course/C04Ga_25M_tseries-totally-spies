@@ -22,7 +22,7 @@ La pandémie de Covid-19 est apparue le 17 novembre 2019, avec les premiers cas 
 
 En février 2020, les premiers cas positifs ont été recensés sur le territoire belge. Afin de limiter la propagation du virus et d’éviter la saturation des hôpitaux, Sophie Wilmès, première ministre de l’époque, a mis en place un premier confinement total le 18 mars 2020 [@RTBF], qui prendra fin en mai 2020. Parmi les mesures mises en place figuraient, notamment, le port obligatoire du masque, le télétravail, la fermeture temporaire des écoles et des commerces [@LOC].
 
-Cependant, face à de nouvelles vagues de Covid-19, le gouvernement a décidé de mettre en place différentes mesures de prévention selon l’évolution de la situation [@vrtnws]. Ces mesures ont eu des conséquences sur la vie sociales et économiques importantes, ainsi que la mise en place de nouvelles mesures dans le secteur de l'enseignement.
+Cependant, face à de nouvelles vagues de Covid-19, le gouvernement a décidé de mettre en place différentes mesures de prévention selon l’évolution de la situation [@vrtnws]. Ces mesures ont eu des conséquences sur la vie sociale et économique importantes, ainsi que la mise en place de nouvelles mesures dans le secteur de l'enseignement.
 
 ## But
 
