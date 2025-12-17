@@ -151,7 +151,7 @@ plot(tsjob,
      ylab = "Déplacement jusqu'au travail",
      col = "lightgrey",
      lwd = 1)
-
+abline(h = 0, col = "black", lwd = 0.5)
 #Série semaine
 lines(covidsemj_ts2, col = "#FFA500" , lwd = 2)
 
@@ -167,6 +167,7 @@ legend("bottomright",
 
 abline(v = c(2020.213, 2020.341), lty = 2, col = "blue")
 abline(v = c(2020.757), lty = 2, col = "red")
+
 ```
 
 ```{r mm1}
@@ -297,9 +298,9 @@ Tout d'abord, nous avons regardé l'évolution du temps passé à la maison en f
 
 Par ailleurs notre analyse, sur l'impact de la Covid-19 sur les déplacements au travail, met en évidence une diminution marquée des déplacements tout au long des périodes de confinement. Cette baisse résulte à la fois de l’adoption massive du télétravail dans les secteurs où les fonctions le permettaient, et de la suspension ou de la réduction d’activité dans de nombreux secteurs économiques, limitant ainsi les déplacements contraints vers le lieu de travail ou d’autres lieux d’activité [@qu4tre2021].
 
-Avant d’entrer dans le détail des différentes phases de la pandémie ayant entraîné des variations des comportements de mobilité, nous avons observé que les week-ends présentaient une différence plus faible par rapport à la situation de référence (avant la mise en œuvre des mesures sanitaires). Cela traduit un impact plus limité des restrictions sur les déplacements liés au travail durant le week-end, ceux-ci étant naturellement moins fréquents que du lundi au vendredi.
+Avant d’entrer dans le détail des différentes phases de la pandémie ayant entraîné des variations des comportements de mobilité, nous avons observé que les week-ends présentaient une différence plus faible par rapport à la situation de référence (avant la mise en œuvre des mesures sanitaires). Cela traduit un impact plus faible des restrictions sur les déplacements liés au travail durant le week-end, ceux-ci étant naturellement moins fréquents que du lundi au vendredi. De plus, les métiers relevant du secteur médical, de l’alimentation ou d’autres activités essentielles restent généralement ouverts le week-end, même en période « normale ». Comme les restrictions liées au Covid ont été moins sévères pour ces secteurs, la baisse observée dans la fréquentation des lieux de travail le week-end y est moins marquée [@SPF]. Par ailleurs, certains domaines, en particulier le secteur hospitalier, ont été d’autant plus sollicités pendant la période Covid, ce qui a pu se traduire par une augmentation ponctuelle des déplacements professionnels le week-end par rapport à la période précédant les restrictions.
 
-Néanmoins, l’analyse des tendances montre que les mesures sanitaires ont affecté de manière similaire les déplacements en semaine et le week-end, bien que dans des proportions différentes. En particulier, à la suite des premières mesures annoncées le 18 mars 2020 par la Première ministre belge Sophie Wilmès, une chute brutale des déplacements vers le lieu de travail est observée, atteignant jusqu’à –… % pour les jours de semaine (lundi à vendredi) et jusqu’à –… % pour les week-ends.
+Néanmoins, l’analyse des tendances montre que les mesures sanitaires ont affecté de manière similaire les déplacements en semaine et le week-end, bien que dans des proportions différentes. En particulier, à la suite des premières mesures annoncées le 18 mars 2020 par la Première ministre belge Sophie Wilmès, une chute brutale des déplacements vers le lieu de travail est observée, atteignant jusqu’à -60% pour les jours de semaine (lundi à vendredi) et jusqu’à –35 % pour les week-ends.
 
 ***Parler ensuite des différentes phases de la Covid que Juliette aura détectées (s’intéresser à la diminution aux alentours de la 100ᵉ semaine)***\
 
