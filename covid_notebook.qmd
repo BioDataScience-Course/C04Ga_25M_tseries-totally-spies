@@ -235,7 +235,7 @@ spectrum(seasonal, spans = c(3,5))
 
 Cycle signifiactif à une fréquence de 52. 365/52 = +/- 7j. Je ne sais pa si on doit prendre en compte les valeurs du début.
 
-### Série 3 : Activités
+### Série 3 : Déplacements jusqu'au commerces et lieux de loisirs en fonction de l'évolution du Covid-19
 
 Intérressons nous a la mobilité pour les lieux de commerces et loisirs.
 
@@ -309,6 +309,11 @@ plot(covidaw_ts)
 # Aggrégation par moyenne des valeurs par semaine
 covidaw_ts2 <- aggregate(covidaw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 plot(covidaw_ts2)
+```
+
+```{r}
+covidaw_ts2_mb <- tsd(covidaw_ts2, method = "average", order = 366, times = 1)
+plot(covidaw_ts2_mb)
 ```
 
 Élimination des jours de la semaine
