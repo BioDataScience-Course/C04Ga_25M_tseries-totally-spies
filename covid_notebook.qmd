@@ -376,10 +376,10 @@ En début 2020, les déplacements vers les commerces et lieux de loisirs la sema
 
 -   1er confinement = **18 mars 2020 – 4 mai 2020**
 
-    Ce confinement consiste en des restrictions sur les loisirs et le sport, une favorisation du télétravail, ainsi que la fermeture des écoles et des universités \[@RTBF\].
+    Ce confinement consiste en des restrictions sur les loisirs et le sport, une favorisation du télétravail, ainsi que la fermeture des écoles et des universités [@RTBF].
 
 -   2e confinement = **2 novembre 2020 - début 2021**
 
-    Deuxième vague de la Covid-19 en octobre 2020, à la suite du retour des vacances scolaires et du retour à l’école. Un deuxième confinement est alors mis en place le 2 novembre 2020. Le déconfinement de ce deuxième confinement a lieu en mars 2021, soit trois mois après le début de la campagne de vaccination (5 janvier 2021). C’est alors sous la forme d’un confinement renforcé que la Belgique relance des mesures contre la Covid-19 \[@vrtnws\].
+    Deuxième vague de la Covid-19 en octobre 2020, à la suite du retour des vacances scolaires et du retour à l’école. Un deuxième confinement est alors mis en place le 2 novembre 2020. Le déconfinement de ce deuxième confinement a lieu en mars 2021, soit trois mois après le début de la campagne de vaccination (5 janvier 2021). C’est alors sous la forme d’un confinement renforcé que la Belgique relance des mesures contre la Covid-19 [@vrtnws].
 
 ## Références
