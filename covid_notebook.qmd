@@ -354,7 +354,7 @@ En début 2020, les déplacements vers les commerces et loisirs la semaine et le
 
 <!--% Lorsque toutes les analyses sont réalisées, terminez ce bloc-notes avec 3 à 6 phrases de conclusion en rapport avec ce que vous avez observé dans vos analyses. Quels sont les éléments les plus pertinents que vous retenez ? -->
 
--   1er confinement = Début 18 mars 2020 - Fin Mai 2020. Ce confinament consiste en des restriction sur les loisirs et le sports, une favorisation du télétravail, fermeture des écoles et des universités [@RTBF].
+-   1er confinement = Début 18 mars 2020 - début Mai 2020. Ce confinament consiste en des restriction sur les loisirs et le sports, une favorisation du télétravail, fermeture des écoles et des universités [@RTBF].
 
 -   2eme confinement = 2ème vague de covid 19 en octobre 2020 suite au retour des vacances scolaire et le retour à l'école. Un deuxième confinement est alors mis en place le 2 novembre 2020. Le déconfinement de ce deuxième confinement se voit prendre place en mars 2021, soit 3 mois après le début de la campagne de vaccination (5 janvier 2021) C'est alors un sous forme d'un confinement renforcé que la belgique relance des mesures covid [@vrtnws].
 
