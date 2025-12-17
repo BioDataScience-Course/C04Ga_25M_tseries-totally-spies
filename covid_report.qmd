@@ -20,9 +20,9 @@ bibliography: references.bib
 
 La pandémie de Covid-19 est apparue le 17 novembre 2019, avec les premiers cas détectés dans la ville de Wuhan, en Chine [@Unicef]. La maladie Covid-19 est provoquée par le coronavirus SARS-CoV-2 et entraîne des symptômes similaires à ceux de la grippe, tels que fièvre, toux, fatigue ou perte du goût et de l’odorat. Le virus se transmet principalement par les gouttelettes respiratoires, le contact direct avec une personne infectée ou le contact avec des surfaces contaminées [@yang2020sars].
 
-En février 2020, les premiers cas positifs ont été recensés sur le territoire belge. Afin de limiter la propagation du virus et d’éviter la saturation des hôpitaux, Sophie Wilmès, première ministre de l’époque, a mis en place un premier confinement total le 18 mars 2020 [@RTBF], qui prendra fin en mai 2020. Parmi les mesures mises en place figuraient, notamment, le port obligatoire du masque, le télétravail, la fermeture temporaire des écoles et des commerces [@LOC].
+En février 2020, les premiers cas positifs ont été recensés sur le territoire belge. Afin de limiter la propagation du virus et d’éviter la saturation des hôpitaux, Sophie Wilmès, première ministre à l’époque, a mis en place un premier confinement total le 18 mars 2020 [@RTBF]. Parmi les mesures mises en place figuraient, notamment, le port obligatoire du masque, le télétravail, la fermeture temporaire des écoles et des commerces [@LOC].
 
-Cependant, face à de nouvelles vagues de Covid-19, le gouvernement a décidé de mettre en place différentes mesures de prévention selon l’évolution de la situation [@vrtnws]. Ces mesures ont eu des conséquences sur la vie sociale et économique importantes, ainsi que la mise en place de nouvelles mesures dans le secteur de l'enseignement.
+Cependant, face aux vagues successives de la Covid-19, le gouvernement belge a progressivement adapté et renforcé les mesures de prévention en fonction de l’évolution de la situation sanitaire [@vrtnws]. Ces mesures ont eu des répercussions importantes sur la vie sociale et économique, ainsi que sur le secteur de l’enseignement, où de nouvelles modalités d’organisation ont été mises en place afin de limiter la propagation du virus.
 
 ## But
 
@@ -197,6 +197,14 @@ abline(v = c(38), lty = 2, col = "red")
 
 Tout d'abord, nous avons regardé l'évolution du temps passé à la maison en fonction du temps, nos résultats sont cohérents avec les événements qui se sont produits durant la pandémie de Covid : un premier confinement très strict en 2020 (très nette augmentation du temps passé à la maison), ensuite en 2021 une suite de plusieurs confinements et déconfinements progressifs a eu lieu, cela est bien représenté dans notre analyse. En 2023, lors du retour à la "normale", on constate que le temps passé à la maison est légèrement supérieur à ce qu'il était au tout début 2020, c'est peut-être un effet de la pandémie.
 
-Ensuite,
+À la suite de notre première analyse portant sur le temps passé à domicile durant la pandémie de la Covid-19, nous avons mis en évidence une augmentation de plus de … % du temps de résidence à la maison par rapport aux habitudes observées avant la mise en place des premières mesures de confinement ***(résultat issu de l’analyse de Basile)***. Cette hausse s’explique notamment par les recommandations gouvernementales visant à limiter les déplacements, en encourageant le télétravail lorsque cela était possible, mais également par la fermeture temporaire de nombreux commerces, services et lieux d’activité non essentiels [@qu4tre2021]. L’ensemble de ces mesures a contribué à une augmentation significative du nombre de personnes présentes à leur domicile.
+
+Par ailleurs notre analyse, sur l'impact de la Covid-19 sur les déplacements au travail, met en évidence une diminution marquée des déplacements tout au long des périodes de confinement. Cette baisse résulte à la fois de l’adoption massive du télétravail dans les secteurs où les fonctions le permettaient, et de la suspension ou de la réduction d’activité dans de nombreux secteurs économiques, limitant ainsi les déplacements contraints vers le lieu de travail ou d’autres lieux d’activité [@qu4tre2021].
+
+Avant d’entrer dans le détail des différentes phases de la pandémie ayant entraîné des variations des comportements de mobilité, nous avons observé que les week-ends présentaient une différence plus faible par rapport à la situation de référence (avant la mise en œuvre des mesures sanitaires). Cela traduit un impact plus limité des restrictions sur les déplacements liés au travail durant le week-end, ceux-ci étant naturellement moins fréquents que du lundi au vendredi.
+
+Néanmoins, l’analyse des tendances montre que les mesures sanitaires ont affecté de manière similaire les déplacements en semaine et le week-end, bien que dans des proportions différentes. En particulier, à la suite des premières mesures annoncées le 18 mars 2020 par la Première ministre belge Sophie Wilmès, une chute brutale des déplacements vers le lieu de travail est observée, atteignant jusqu’à –… % pour les jours de semaine (lundi à vendredi) et jusqu’à –… % pour les week-ends.
+
+***Parler ensuite des différentes phases de la Covid que Juliette aura détectées (s’intéresser à la diminution aux alentours de la 100ᵉ semaine)***\
 
 ## Références
