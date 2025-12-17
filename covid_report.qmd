@@ -108,6 +108,40 @@ Il est intéressant aussi de remarquer que en 2022 lors du retour à la "normale
 tsjob <- ts(covid1$job, start = c(2020,46), frequency = 365)
 ```
 
+```{r semaine}
+covidsemj <- covid
+# Calcul des jours de la semaine
+covidsemj$weekdays <- weekdays(as.POSIXct(covidsemj$date))
+# Les données du week-end sont remplacées par des valeurs manquantes
+covidsemj[covidsemj$weekdays == "Saturday" | covidsemj$weekdays == "Sunday" , 2:7] <- NA 
+# La série temporelle est créée (début le 15 février 2020 = 46e jour de l'année 2020)
+covidsemj_ts <- ts(covidsemj$workplaces_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+```
+
+```{r aggrsem}
+# Aggrégation par moyenne des valeurs par semaine
+covidsemj_ts2 <- aggregate(covidsemj_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+```
+
+```{r wk}
+covidwej <- covid
+# Calcul des jours de la semaine
+covidwej$weekdays <- weekdays(as.POSIXct(covidwej$date))
+# Les données du week-end sont remplacées par des valeurs manquantes
+covidwej[covidwej$weekdays == "Monday" |
+        covidwej$weekdays == "Tuesday" |
+        covidwej$weekdays == "Wednesday" |
+        covidwej$weekdays == "Thursday" |
+        covidwej$weekdays == "Friday", 2:7] <- NA
+# La série temporelle est créée (début le 15 février 2020 = 46e jour de l'année 2020)
+covidwej_ts <- ts(covidwej$workplaces_percent_change_from_baseline, start = c(2020, 46), frequency = 365)
+```
+
+```{r aggrwk}
+# Aggrégation par moyenne des valeurs par semaine
+covidwej_ts2 <- aggregate(covidwej_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+```
+
 ```{r combinaison}
 plot(tsjob,
      main = "Déplacement hebdomadaire des travailleurs pendant le Covid",
@@ -133,10 +167,18 @@ abline(v = c(2020.213, 2020.341), lty = 2, col = "green")
 abline(v = c(2020.757), lty = 2, col = "red")
 ```
 
+```{r mm1}
+job_av <- tsd(covidsemj_ts2, method = "average", order = 5)
+```
+
 ```{r combav}
 plot(job_av, stack = FALSE, resid = FALSE, col = c("grey90", "#FFA500"),lpos = c(110, -52))
 abline(v = c(5, 12), lty = 2, col = "green")
 abline(v = c(38), lty = 2, col = "red")
+```
+
+```{r mm2}
+job_we <- tsd(covidwej_ts2, method = "average", order = 5)
 ```
 
 ```{r combwe}
