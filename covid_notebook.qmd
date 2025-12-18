@@ -242,7 +242,7 @@ seasonal <- job_stl$time.series[, "seasonal"]
 spectrum(seasonal, spans = c(3,5))
 ```
 
-Cycle signifiactif à une fréquence de 52. 365/52 = +/- 7j. Je ne sais pa si on doit prendre en compte les valeurs du début.
+Cycle signifiactif à une fréquence de 52. 365/52 = +/- 7j.
 
 ### Série 3 : Déplacements jusqu'au commerces et lieux de loisirs en fonction de l'évolution du Covid-19
 
@@ -253,7 +253,7 @@ activite_ts <- ts(covid1$activité, start = c(2020,46), frequency = 365)
 plot(activite_ts, main = "Mobilité pour les commerces et loisirs")
 ```
 
-Un filtrage par EVF est réalisé pour débruiter la séries
+Un filtrage par EVF est réalisé pour débruiter la série
 
 ```{r}
 activite_evf1 <- tsd(activite_ts, method = "evf", lag = 30, axes = 1)
@@ -300,7 +300,7 @@ legend("bottomright",
        bty = "n")
 ```
 
-Ce graphique permet de visualiser le peu de différences entre les méthodes de filtrages. Le filtrage EVF sera choisi pour le rapport car la méthode permet d'avoir plus d'infos que la méthode des médianes qui segmente la série en calculant les médianes d'une fenetre mobiles.
+Ce graphique permet de visualiser le peu de différences entre les méthodes de filtrages. Le filtrage EVF sera choisi pour le rapport car la méthode permet d'avoir plus d'infos que la méthode des médianes qui segmente la série en calculant les médianes d'une fenêtre mobile.
 
 Pour la suite de l'analyse, les jours de la semaine et les weekends ont été séparés en deux séries temporelles distinctes. En effet, une comparaison des déplacements vers les commerces et les loisirs entre la semaine et le week-end sera réalisée.
 
@@ -381,7 +381,7 @@ abline(v = c(2020.213, 2020.341), lty = 2, col = "green")
 abline(v = c(2020.757), lty = 2, col = "red")
 ```
 
-En début 2020, les déplacements vers les commerces et lieux de loisirs la semaine et le week-end sont très proches et diminuent fortement comme vu précedement. Les traits en pointillé vert correspondent a la premiere période de confinement. Il y a ensuite une augmentation 3 mois plus tard avec également peu de différence entre les jours de la semaine et le week-end. La fin d'année de 2021est marquée par une diminution de fréquentations des commerces et loisirs. Les traits en pointillérouges correspondent a la date du second confinement. Pendant l'année 2021, les déplacements vers les commerces et les loisirs est plus faibles le week-end que la semaine. Cela reste similaire le restant de l'année 2021. A partir de 2022 la mobilité vers les commerces et loisirs le week-end est légèrement plus élevé que la semaine. La fréquentation des commerces et lieux de loisirs est légerement plus élevée a partir de la moitié de l'année 2021 par rapport au début de la série en 2020.
+En début 2020, les déplacements vers les commerces et lieux de loisirs la semaine et le week-end sont très proches et diminuent fortement comme vu précédemment. Les traits en pointillé vert correspondent a la première période de confinement. Il y a ensuite une augmentation 3 mois plus tard avec également peu de différence entre les jours de la semaine et le week-end. La fin d'année de 2021est marquée par une diminution de fréquentations des commerces et loisirs. Les traits en pointillé rouges correspondent a la date du second confinement. Pendant l'année 2021, les déplacements vers les commerces et les loisirs est plus faibles le week-end que la semaine. Cela reste similaire le restant de l'année 2021. A partir de 2022 la mobilité vers les commerces et loisirs le week-end est légèrement plus élevé que la semaine. La fréquentation des commerces et lieux de loisirs est légèrement plus élevée a partir de la moitié de l'année 2021 par rapport au début de la série en 2020.
 
 ## Conclusion
 
