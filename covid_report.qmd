@@ -48,6 +48,8 @@ L'analyse est réalisée avec la [SciViews Box 2025](https://www.sciviews.org/so
 
 <!--% Présentez les analyses les plus pertinents que vous avez sélectionnés. Structurez la section en partie avec des titres explicites de niveau trois.-->
 
+### Import des données
+
 ```{r setup, include=FALSE}
 # Nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
 if (!"tools:tests" %in% search())
