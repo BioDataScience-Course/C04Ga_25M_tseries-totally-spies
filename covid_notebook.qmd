@@ -220,10 +220,6 @@ On peut voir que les gens semblent plus se déplacer pour se rendre au travail p
 
 J'ai regardé pour les valeurs et à part dire que c'est une augmentation ou une diminution par rapport à une valeur médiane, ils ne disent rien d'autre. Je vais voir avec les autres s'ils ont l'info.
 
-Séparer tendance générale de cycle après avoir vu notre acf:
-
-Cycle de vacances? Gros truc de résidus...? Besoin d'aide sur ca pour en faire une analyse spectrale après aussi
-
 Besoin de stationnariser avec de faire une analyse spectrale
 
 ```{r}
