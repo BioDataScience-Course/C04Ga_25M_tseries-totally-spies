@@ -162,15 +162,15 @@ lines(covidsemj_ts2, col = "#FFA500" , lwd = 2)
 #Série WE
 lines(covidwej_ts2, col = "violet", lwd = 2)
 
-#Légende
-legend("bottomright",
-       legend = c("Semaine", "Week-end"),
-       col = c("#FFA500", "violet"),
-       lwd = c(2, 2),
-       bty = "n")
-
 abline(v = c(2020.213, 2020.341), lty = 2, col = "blue")
 abline(v = c(2020.757), lty = 2, col = "red")
+
+legend("bottomright",
+       legend = c("Semaine","Week-end", "1er confinement", "2e confinement"),
+       col = c("#FFA500","violet","blue","red"),
+       lty = c(1,1,2,2),
+       bty = "n",
+       cex = 0.6)
 
 ```
 
@@ -185,9 +185,15 @@ job_av <- tsd(covidsemj_ts2, method = "average", order = 5)
 ```
 
 ```{r combav}
-plot(job_av, stack = FALSE, resid = FALSE, col = c("grey90", "#FFA500"),lpos = c(110, -52), xlab = "Temps [semaine]", ylab = "Déplacements jusqu'au travail", main = "Déplacements jusqu'au travail la semaine pendant la Covid-19")
+plot(job_av, stack = FALSE, resid = FALSE, col = c("grey90", "#FFA500"),lpos = c(110, -100), xlab = "Temps [semaine]", ylab = "Déplacements jusqu'au travail", main = "Déplacements jusqu'au travail la semaine pendant la Covid-19")
 abline(v = c(5, 12), lty = 2, col = "blue")
 abline(v = c(38), lty = 2, col = "red")
+legend("bottomright",
+       legend = c("series","filtered", "1er confinement", "2e confinement"),
+       col = c("grey90","#FFA500","blue","red"),
+       lty = c(1,1,2,2),
+       bty = "n",
+       cex = 0.8)
 ```
 
 ```{r mm2}
@@ -195,9 +201,15 @@ job_we <- tsd(covidwej_ts2, method = "average", order = 5)
 ```
 
 ```{r combwe}
-plot(job_we, stack = FALSE, resid = FALSE, col = c("grey90", "violet"), lpos = c(110, -30), xlab = "Temps [semaine]", ylab = "Déplacements jusqu'au travail", main = "Déplacements jusqu'au travail le weekend pendant la Covid-19")
+plot(job_we, stack = FALSE, resid = FALSE, col = c("grey90", "violet"), lpos = c(110, -100), xlab = "Temps [semaine]", ylab = "Déplacements jusqu'au travail", main = "Déplacements jusqu'au travail le weekend pendant la Covid-19")
 abline(v = c(5, 12), lty = 2, col = "blue")
 abline(v = c(38), lty = 2, col = "red")
+legend("bottomright",
+       legend = c("series","filtered", "1er confinement", "2e confinement"),
+       col = c("grey90","violet","blue","red"),
+       lty = c(1,1,2,2),
+       bty = "n",
+       cex = 0.8)
 ```
 
 Lorsqu'on regarde les deux graphiques, on peut voir que les déplacements jusqu'aux lieux de travail semble avoir été moins impactés le weekend que la semaine. On peut aussi observer que la courbe de la semaine (orange) est plus accidentée que celle du weekend (rose).
