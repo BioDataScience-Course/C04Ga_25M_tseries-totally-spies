@@ -218,7 +218,11 @@ legend("bottomright",
        col = c("grey", "blue"),
        lwd = c(1, 2, 2),
        bty = "n")
+abline(v = c(2020.213, 2020.341), lty = 2, col = "green")
+abline(v = c(2020.757), lty = 2, col = "red")
 ```
+
+Les pointillés vert représentent le premier confinement, une diminution de la mobilité vers les activitées récréatives de 50% est constastée par rapport a la référence. Apres la fin du confinement, il y a une augmentation de fréquentation des activitées récréatives presqu'égale au début de la série. Les pointillés rouges marquent le début du deuxieme confinement en Novembre. La diminution est moins importante que lors du premier confinement. La mobilité augmente lentement pour atteindre un niveau plus élevé qu'au début de la série en 2020.
 
 Une comparaison de la mobilité vers les activitées récréatives entre les semaine et les week- end a été réalisée.
 
@@ -283,9 +287,11 @@ legend("bottomright",
        col = c("lightgrey", "#FFA500", "violet"),
        lwd = c(1, 2, 2),
        bty = "n")
-abline(v = c(2020.213, 2020.341), lty = 2, col = "green")
+abline(v = c(2020.213, 2020.341), lty = 2, col = "blue")
 abline(v = c(2020.757), lty = 2, col = "red")
 ```
+
+Les pointillés bleu correspondent au premier confinement en mars 2020. Une diminution de la mobilité vers les activitées récréatives est observée autant la semaine que le week-end. Apres le confinement, une augmentation est observée. Les déplacements sont légerement plus élevée la semaine que le week-end. Les traits en pointillés rouges est le début du deuxieme confinement. Une nouvelle diminution de la fréquentation des activitées récréatives est observée. La mobilité est toujours plus élevée la semaine que le week-end. La mobilité augmente petit a petit a partir de 2021. A partir de 2022, les déplacements vers les activitées récréatives le week-end devient légèrement plus élevée que la semaine. La fréquentation des commerces et lieux de loisirs est légerement plus élevée a partir de la moitié de l'année 2021 par rapport au début de la série en 2020.
 
 ## Discussion et Conclusion
 
