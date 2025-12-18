@@ -91,22 +91,20 @@ covidw_ts <- ts(covidw$residential_percent_change_from_baseline, start = c(2020,
 #plot(covidw_ts)
 # Aggrégation par moyenne des valeurs par semaine
 covidw_ts2 <- aggregate(covidw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
-plot(covidw_ts2)
+plot(covidw_ts2, xlab = "Temps (année)", ylab="Temps passé à la maison")
 #tsp(covidw_ts2
 ```
 
 ```{r decompmaison2}
 decompmaison2 <-tsd(covidw_ts2, method = "median", order = 1, times = 10)
-plot(decompmaison2)
+
 ```
 
 ```{r}
 plot(decompmaison2, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos = "topright", ylab = "Temps passé à la maison", xlab = "Temps (semaine)",main = "Évolution du temps passé à la maison entre 2020 et 2022")
 ```
 
-On peut voir dans ce graphique que nous avons une très grande augmentation du temps passé à la maison en 2020, cela correspond au moment du premier confinement, on voit aussi plusieurs pics et diminution en 2021.
-
-Il est intéressant aussi de remarquer que en 2022 lors du retour à la "normale" le temps passé à la maison est légèrement plus haut que ce qu'il était au tout début 2020 avant le covid.
+On peut voir dans ce graphique que nous avons une très grande augmentation du temps passé à la maison début 2020 ( plus précisément en mars) on voit aussi plusieurs pics et diminution en 2021 avant un retour progressif à la normale en 2022.
 
 ### Evolution des déplacements pour aller au travail au cours du temps
 
@@ -326,9 +324,9 @@ Les pointillés bleu correspondent au premier confinement en mars 2020. Une dimi
 
 <!--% En tenant compte du but de votre carnet de notes et de vos résultats, discutez de résultats et proposez des conclusions à votre analyse en 5 à 10 phrases. -->
 
-Tout d'abord, nous avons regardé l'évolution du temps passé à la maison en fonction du temps, nos résultats sont cohérents avec les événements qui se sont produits durant la pandémie de Covid : un premier confinement très strict en 2020 (très nette augmentation du temps passé à la maison), ensuite en 2021 une suite de plusieurs confinements et déconfinements progressifs a eu lieu, cela est bien représenté dans notre analyse. En 2023, lors du retour à la "normale", on constate que le temps passé à la maison est légèrement supérieur à ce qu'il était au tout début 2020, c'est peut-être un effet de la pandémie.
+Tout d'abord, nous avons regardé l'évolution du temps passé à la maison en fonction du temps, nos résultats sont cohérents avec les événements qui se sont produits durant la pandémie de Covid : un premier confinement très strict en 2020 (très nette augmentation du temps passé à la maison), ensuite en 2021 une suite de plusieurs confinements et déconfinements progressifs a eu lieu, cela est bien représenté dans notre analyse. L'effet des recommandations gouvernementales sont visibles : celles-ci visaient à limiter les déplacements, en encourageant le télétravail lorsque cela était possible, la fermeture temporaire de nombreux commerces, services et lieux d’activité non essentiels [@qu4tre2021] a également contribué à cette augmentation du temps passé à la maison. En 2022, lors du retour à la "normale", on peut noter que le temps passé à la maison est légèrement supérieur à ce qu'il était au tout début 2020, c'est peut-être un effet de la pandémie.
 
-À la suite de notre première analyse portant sur le temps passé à domicile durant la pandémie de la Covid-19, nous avons mis en évidence une augmentation de plus de … % du temps de résidence à la maison par rapport aux habitudes observées avant la mise en place des premières mesures de confinement ***(résultat issu de l’analyse de Basile)***. Cette hausse s’explique notamment par les recommandations gouvernementales visant à limiter les déplacements, en encourageant le télétravail lorsque cela était possible, mais également par la fermeture temporaire de nombreux commerces, services et lieux d’activité non essentiels [@qu4tre2021]. L’ensemble de ces mesures a contribué à une augmentation significative du nombre de personnes présentes à leur domicile.
+À la suite de notre première analyse portant sur le temps passé à domicile durant la pandémie de la Covid-19, nous avons mis en évidence une augmentation de plus de … % du temps de résidence à la maison par rapport aux habitudes observées avant la mise en place des premières mesures de confinement ***(résultat issu de l’analyse de Basile)***.
 
 Par ailleurs notre analyse, sur l'impact de la Covid-19 sur les déplacements au travail, met en évidence une diminution marquée des déplacements tout au long des périodes de confinement. Cette baisse résulte à la fois de l’adoption massive du télétravail dans les secteurs où les fonctions le permettaient, et de la suspension ou de la réduction d’activité dans de nombreux secteurs économiques, limitant ainsi les déplacements contraints vers le lieu de travail ou d’autres lieux d’activité [@qu4tre2021].
 
