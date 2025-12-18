@@ -108,13 +108,13 @@ abline(v = c(88,107), lty = 2, col = "yellow3")
 
 ```
 
-On peut voir dans ce graphique que nous avons une très grande augmentation du temps passé à la maison début 2020 ( plus précisément en mars) on voit aussi plusieurs pics et diminution en 2021 avant un retour progressif à la normale en 2022.
+On peut voir dans ce graphique que nous avons une très grande augmentation du temps passé à la maison début 2020 (plus précisément en mars) on voit aussi plusieurs pics et diminution en 2021 avant un retour progressif à la normale en 2022.
 
-En bleu est représenté la période du 1er confinement ( début mars 2020)
+En bleu est représenté la période du 1er confinement (début mars 2020)
 
-En vert la période du 2ème confinement suivi d'un déconfinement progressif ( novembre 2020 jusque le déconfinement progressif lors des premiers mois de 2021).
+En vert la période du 2ème confinement suivi d'un déconfinement progressif (novembre 2020 jusqu'au déconfinement progressif lors des premiers mois de 2021).
 
-En jaune, cela correspond à l'hiver 2021-2022, avec une nouvelle vague de covid et des mesures certes moins drastique que lors des vagues précédentes mais qui ont augmenté aussi le temps passée à la maison. ( masque, télétravail, covid safe ticket, fermetures et restrictions d’activités)
+En jaune, cela correspond à l'hiver 2021-2022, avec une nouvelle vague de Covid-19 et des mesures certes moins drastique que lors des vagues précédentes mais qui ont augmenté aussi le temps passée à la maison.
 
 ### Evolution des déplacements pour aller au travail au cours du temps
 
@@ -334,13 +334,13 @@ legend("bottomright",
        cex = 0.6)
 ```
 
-Les pointillés bleu correspondent au premier confinement en mars 2020. Une diminution de la mobilité vers les activitées récréatives est observée autant la semaine que le week-end. Apres le confinement, une augmentation est observée. Les déplacements sont légerement plus élevée la semaine que le week-end. Les traits en pointillés rouges est le début du deuxieme confinement. Une nouvelle diminution de la fréquentation des activitées récréatives est observée. La mobilité est toujours plus élevée la semaine que le week-end. La mobilité augmente petit a petit a partir de 2021. A partir de 2022, les déplacements vers les activitées récréatives le week-end devient légèrement plus élevée que la semaine. La fréquentation des commerces et lieux de loisirs est légerement plus élevée a partir de la moitié de l'année 2021 par rapport au début de la série en 2020.
+Les pointillés bleu correspondent au premier confinement en mars 2020. Une diminution de la mobilité vers les activités récréatives est observée autant la semaine que le week-end. Apres le confinement, une augmentation est observée. Les déplacements sont légèrement plus élevée la semaine que le week-end. Les traits en pointillés rouges est le début du deuxième confinement. Une nouvelle diminution de la fréquentation des activités récréatives est observée. La mobilité est toujours plus élevée la semaine que le week-end. La mobilité augmente petit a petit a partir de 2021. A partir de 2022, les déplacements vers les activités récréatives le week-end devient légèrement plus élevée que la semaine. La fréquentation des commerces et lieux de loisirs est légèrement plus élevée a partir de la moitié de l'année 2021 par rapport au début de la série en 2020.
 
 ## Discussion et Conclusion
 
 <!--% En tenant compte du but de votre carnet de notes et de vos résultats, discutez de résultats et proposez des conclusions à votre analyse en 5 à 10 phrases. -->
 
-Tout d'abord, nous avons regardé l'évolution du temps passé à la maison en fonction du temps, nos résultats sont cohérents avec les événements qui se sont produits durant la pandémie de Covid : un premier confinement très strict en 2020 (très nette augmentation du temps passé à la maison), ensuite en 2021 une suite de plusieurs confinements et déconfinements progressifs a eu lieu, cela est bien représenté dans notre analyse. L'effet des recommandations gouvernementales sont visibles : celles-ci visaient à limiter les déplacements, en encourageant le télétravail lorsque cela était possible, la fermeture temporaire de nombreux commerces, services et lieux d’activité non essentiels [@qu4tre2021] a également contribué à cette augmentation du temps passé à la maison.
+Tout d'abord, nous avons regardé l'évolution du temps passé à la maison en fonction du temps, nos résultats sont cohérents avec les évènements qui se sont produits durant la pandémie de Covid : un premier confinement très strict en 2020 (très nette augmentation du temps passé à la maison), ensuite en 2021 une suite de plusieurs confinements et déconfinements progressifs a eu lieu, cela est bien représenté dans notre analyse. L'effet des recommandations gouvernementales sont visibles : celles-ci visaient à limiter les déplacements, en encourageant le télétravail lorsque cela était possible, la fermeture temporaire de nombreux commerces, services et lieux d’activité non essentiels [@qu4tre2021] a également contribué à cette augmentation du temps passé à la maison.
 
 Par ailleurs notre analyse, sur l'impact de la Covid-19 sur les déplacements au travail, met en évidence une diminution marquée des déplacements tout au long des périodes de confinement. Cette baisse résulte à la fois de l’adoption massive du télétravail dans les secteurs où les fonctions le permettaient, et de la suspension ou de la réduction d’activité dans de nombreux secteurs économiques, limitant ainsi les déplacements contraints vers le lieu de travail ou d’autres lieux d’activité [@qu4tre2021].
 
