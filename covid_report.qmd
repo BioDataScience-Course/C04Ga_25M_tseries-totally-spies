@@ -103,7 +103,7 @@ decompmaison2 <-tsd(covidw_ts2, method = "median", order = 1, times = 10)
 ```{r}
 plot(decompmaison2, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos = "topright", ylab = "Temps passé à la maison", xlab = "Temps (semaine)",main = "Évolution du temps passé à la maison entre 2020 et 2022")
 abline(v = c(3, 19), lty = 2, col = "blue")
-abline(v = c(35,68), lty = 2, col = "green")
+abline(v = c(35,68), lty = 2, col = "green4")
 abline(v = c(88,107), lty = 2, col = "yellow3")
 ```
 
