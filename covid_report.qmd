@@ -237,13 +237,9 @@ abline(v = c(2020.213, 2020.341), lty = 2, col = "green")
 abline(v = c(2020.757), lty = 2, col = "red")
 ```
 
-<<<<<<< HEAD
-Les pointillés vert représentent le premier confinement, une diminution de la mobilité vers les activitées récréatives de 50% est constastée par rapport a la référence. Apres la fin du confinement, il y a une augmentation de fréquentation des activitées récréatives presqu'égale au début de la série. Les pointillés rouges marquent le début du deuxieme confinement en Novembre. La diminution est moins importante que lors du premier confinement. La mobilité augmente lentement pour atteindre un niveau plus élevé qu'au début de la série en 2020.
+Les pointillés vert représentent le premier confinement, une diminution de la mobilité vers les activités récréatives de 50% est constastée par rapport a la référence. Apres la fin du confinement, il y a une augmentation de fréquentation des activités récréatives presque égale au début de la série. Les pointillés rouges marquent le début du deuxième confinement en Novembre. La diminution est moins importante que lors du premier confinement. La mobilité augmente lentement pour atteindre un niveau plus élevé qu'au début de la série en 2020.
 
-Une comparaison de la mobilité vers les activitées récréatives entre les semaine et les week- end a été réalisée.
-=======
-Une comparaison de la mobilité vers les activités récréatives entre les semaine et les weekend a été réalisée.
->>>>>>> b9a4ad570b2b61b1d77f8ade815a52cb5690c385
+Une comparaison de la mobilité vers les activités récréatives entre les semaines et les week-end a été réalisée.
 
 ```{r}
 covidaw <- covid
