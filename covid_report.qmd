@@ -75,9 +75,7 @@ covid %>.%
 
 ### Évolution du temps passé à la maison au cours du temps
 
-Pour cette partie, il est plus pertinent de se consacrer uniquement aux jours de la semaine :
-
-En temps normal, les gens sont d’oﬀice plus souvent à la maison le weekend qu’il y ait covid ou pas covid, nous enlevons donc les weekends afin de clarifier une première notre série. Nous allons donc voir l’effet du covid sur le temps passé à la maison en semaine.
+Pour cette analyse, il est plus pertinent de se concentrer uniquement sur les jours de semaine. En effet, même en dehors de la période Covid, les individus passent naturellement davantage de temps à domicile durant le week-end. Retirer ces jours permet donc de clarifier la série une première fois et d’isoler l’effet du Covid sur le temps passé à la maison en semaine.
 
 ```{r aggregate maison}
 covidw <- covid
@@ -101,7 +99,7 @@ plot(decompmaison2)
 ```
 
 ```{r}
-plot(decompmaison2, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos = "topright", ylab = "Temps passé à la maison", xlab = "Temps (semaine)",main = "Évolution du temps passé à la maison entre 2020 et 2022")
+plot(decompmaison2, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos = "topright", ylab = "Temps passé à la maison", xlab = "Temps [semaine])",main = "Évolution du temps passé à la maison entre 2020 et 2022")
 ```
 
 On peut voir dans ce graphique que nous avons une très grande augmentation du temps passé à la maison en 2020, cela correspond au moment du premier confinement, on voit aussi plusieurs pics et diminution en 2021.
@@ -153,7 +151,7 @@ covidwej_ts2 <- aggregate(covidwej_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 ```{r combinaison}
 plot(tsjob,
      main = "Déplacement hebdomadaire des travailleurs pendant le Covid",
-     xlab = "Année",
+     xlab = "Temps",
      ylab = "Déplacement jusqu'au travail",
      col = "lightgrey",
      lwd = 1)
@@ -237,7 +235,7 @@ activite_evf1 <- tsd(activite_ts, method = "evf", lag = 30, axes = 1)
 activite_trend <- extract(activite_evf1, components = "filtered")
 plot(activite_ts, 
   main = "Mobilité des citoyens vers les activitées récréatives",
-     xlab = "Année",
+     xlab = "Temps",
      ylab = "Déplacement vers les activitées récréatives",
      col = "grey",
      lwd = 1)
@@ -301,7 +299,7 @@ covidawe_ts2_f <- extract(covidawe_ts2_mb, components = "filtered")
 
 plot(activite_ts,
      main = " Mobilité vers les activitées récréatives pendant le Covid",
-     xlab = "Année",
+     xlab = "Temps",
      ylab = "Déplacement vers activitées récréatives",
      col = "lightgrey",
      lwd = 1)
