@@ -231,9 +231,7 @@ abline(v = c(38), lty = 2, col = "red")
 
 On peut voir que les gens semblent plus se déplacer pour se rendre au travail pendant le weekend que pendant la semaine tout au long du Covid. Cela peut être expliqué par le fait que les personnes qui n'avaient pas le choix que de travailler comme les commerçants dans l'alimentaire, le personnel soignant, etc étaient les seuls à se déplacer le weekend alors que tous les autres étaient priés de rester chez eux.
 
-J'ai regardé pour les valeurs et à part dire que c'est une augmentation ou une diminution par rapport à une valeur médiane, ils ne disent rien d'autre. Je vais voir avec les autres s'ils ont l'info.
-
-Besoin de stationnariser avec de faire une analyse spectrale
+Besoin de stationnariser avant de faire une analyse spectrale
 
 ```{r}
 job_stl <- stl(tsjob, s.window=8)
