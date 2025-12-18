@@ -240,13 +240,14 @@ plot(activite_ts,
      col = "grey",
      lwd = 1)
 lines(activite_trend, col = "blue" , lwd = 2)
-legend("bottomright",
-       legend = c("Brute", "EVF"  ),
-       col = c("grey", "blue"),
-       lwd = c(1, 2, 2),
-       bty = "n")
 abline(v = c(2020.213, 2020.341), lty = 2, col = "green")
 abline(v = c(2020.757), lty = 2, col = "red")
+legend("bottomright",
+       legend = c("Brute","EVF", "1er confinement", "2e confinement"),
+       col = c("grey","blue","green","red"),
+       lty = c(1,1,2,2),
+       bty = "n",
+       cex = 0.8)
 ```
 
 Les pointillés verts représentent le premier confinement : une diminution de la mobilité vers les activités récréatives de 50 % est constatée par rapport à la référence. Après la fin du confinement, il y a une augmentation de la fréquentation des activités récréatives presque égale au début de la série. Les pointillés rouges marquent le début du deuxième confinement en novembre. La diminution est moins importante que lors du premier confinement. La mobilité augmente lentement pour atteindre un niveau plus élevé qu’au début de la série en 2020.
@@ -308,14 +309,14 @@ lines(covidaw_ts2_f, col = "#FFA500" , lwd = 2)
 #Série WE
 lines(covidawe_ts2_f, col = "violet", lwd = 2)
 
-#Légende
-legend("bottomright",
-       legend = c("Brute", "Semaine", "Week-end"),
-       col = c("lightgrey", "#FFA500", "violet"),
-       lwd = c(1, 2, 2),
-       bty = "n")
 abline(v = c(2020.213, 2020.341), lty = 2, col = "blue")
 abline(v = c(2020.757), lty = 2, col = "red")
+legend("bottomright",
+       legend = c("Brute","Semaine", "Week-end", "1er confinement", "2e confinement"),
+       col = c("lightgrey","#FFA500", "violet", "blue","red"),
+       lty = c(1,1,1,2,2),
+       bty = "n",
+       cex = 0.6)
 ```
 
 Les pointillés bleu correspondent au premier confinement en mars 2020. Une diminution de la mobilité vers les activitées récréatives est observée autant la semaine que le week-end. Apres le confinement, une augmentation est observée. Les déplacements sont légerement plus élevée la semaine que le week-end. Les traits en pointillés rouges est le début du deuxieme confinement. Une nouvelle diminution de la fréquentation des activitées récréatives est observée. La mobilité est toujours plus élevée la semaine que le week-end. La mobilité augmente petit a petit a partir de 2021. A partir de 2022, les déplacements vers les activitées récréatives le week-end devient légèrement plus élevée que la semaine. La fréquentation des commerces et lieux de loisirs est légerement plus élevée a partir de la moitié de l'année 2021 par rapport au début de la série en 2020.
