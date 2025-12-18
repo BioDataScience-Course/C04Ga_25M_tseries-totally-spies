@@ -89,6 +89,7 @@ covidw_ts <- ts(covidw$residential_percent_change_from_baseline, start = c(2020,
 #plot(covidw_ts)
 # Aggrégation par moyenne des valeurs par semaine
 covidw_ts2 <- aggregate(covidw_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
+par(cex.main = 0.8)
 plot(covidw_ts2, xlab = "Temps (année)", ylab="Temps passé à la maison")
 #tsp(covidw_ts2
 ```
@@ -99,6 +100,7 @@ decompmaison2 <-tsd(covidw_ts2, method = "median", order = 1, times = 10)
 ```
 
 ```{r}
+par(cex.main = 0.8)
 plot(decompmaison2, stack = FALSE, resid = FALSE, col = c("grey80", "red"), lpos = "topright", ylab = "Temps passé à la maison", xlab = "Temps (semaine)",main = "Évolution du temps passé à la maison entre 2020 et 2022")
 abline(v = c(3, 19), lty = 2, col = "blue")
 abline(v = c(35,68), lty = 2, col = "green4")
@@ -157,8 +159,9 @@ covidwej_ts2 <- aggregate(covidwej_ts, 52, FUN = collapse::fmean, ts.eps = 1/52)
 ```
 
 ```{r combinaison}
+par(cex.main = 0.8)
 plot(tsjob,
-     main = "Déplacement hebdomadaire des travailleurs pendant le Covid",
+     main = "Déplacement hebdomadaire des travailleurs pendant le Covid", 
      xlab = "Temps",
      ylab = "Déplacement jusqu'au travail",
      col = "lightgrey",
@@ -182,7 +185,7 @@ legend("bottomright",
 
 ```
 
-D'une part, on voit bien les moments où les confinements ont été établis. En effet, les lignes en pointillés bleus délimitent, dans un premier temps, une chute brutale des déplacements et par la suite une reprise plus lente des déplacements jusqu'au travail. De plus, la ligne en pointillés rouge est également suivie d'une diminution des déplacements mais celle-ci est moins importante que la première.
+D'une part, on voit bien les moments où les confinements ont été établis. En effet, les lignes en pointillés bleus délimitent, dans un premier temps, une chute brutale des déplacements aux alentours du 18 mars 2020, et par la suite une reprise plus lente des déplacements jusqu'au travail début mai 2020. De plus, la ligne en pointillés rouge, indiquant le 2 novembre, est également suivie d'une diminution des déplacements mais celle-ci est moins importante que la première.
 
 D'autre part, il semblerait que les déplacements jusqu'au travail étaient plus élevés le weekend qu'en semaine et que les diminutions de déplacements liées aux confinements étaient plus importantes la semaine que le weekend.
 
@@ -193,6 +196,7 @@ job_av <- tsd(covidsemj_ts2, method = "average", order = 5)
 ```
 
 ```{r combav}
+par(cex.main = 0.8)
 plot(job_av, stack = FALSE, resid = FALSE, col = c("grey90", "#FFA500"),lpos = c(110, -100), xlab = "Temps [semaine]", ylab = "Déplacements jusqu'au travail", main = "Déplacements jusqu'au travail la semaine pendant la Covid-19")
 abline(v = c(5, 12), lty = 2, col = "blue")
 abline(v = c(38), lty = 2, col = "red")
@@ -209,6 +213,7 @@ job_we <- tsd(covidwej_ts2, method = "average", order = 5)
 ```
 
 ```{r combwe}
+par(cex.main = 0.8)
 plot(job_we, stack = FALSE, resid = FALSE, col = c("grey90", "violet"), lpos = c(110, -100), xlab = "Temps [semaine]", ylab = "Déplacements jusqu'au travail", main = "Déplacements jusqu'au travail le weekend pendant la Covid-19")
 abline(v = c(5, 12), lty = 2, col = "blue")
 abline(v = c(38), lty = 2, col = "red")
@@ -230,6 +235,7 @@ Voici la série temporelle qui représente la mobilité des citoyens vers les ac
 
 ```{r}
 activite_ts <- ts(covid1$activité, start = c(2020,46), frequency = 365)
+par(cex.main = 0.8)
 plot(activite_ts, main = "Mobilité vers les activités récréatives", xlab = "Temps", ylab = "Activitées récréatives")
 ```
 
@@ -241,6 +247,7 @@ activite_evf1 <- tsd(activite_ts, method = "evf", lag = 30, axes = 1)
 
 ```{r}
 activite_trend <- extract(activite_evf1, components = "filtered")
+par(cex.main = 0.8)
 plot(activite_ts, 
   main = "Mobilité des citoyens vers les activitées récréatives",
      xlab = "Temps",
@@ -304,7 +311,7 @@ Un graphique de comparaison de la mobilité vers les activités récréatives a 
 ```{r}
  covidaw_ts2_f <- extract(covidaw_ts2_mb, components = "filtered")
 covidawe_ts2_f <- extract(covidawe_ts2_mb, components = "filtered")
-
+par(cex.main = 0.8)
 plot(activite_ts,
      main = " Mobilité vers les activitées récréatives pendant le Covid",
      xlab = "Temps",
